@@ -1,124 +1,164 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-
+<html>
   <head>
-  <meta charset="utf-8">
-  <meta name="author" content="zchengsite, 1451426471@qq.com" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="水是有毒的">
+  <meta name="keyword" content="hexo-theme, vuejs">
   
+    <link rel="shortcut icon" href="/css/images/logo.png">
   
-  <title>UVM_LAB 1 | Hexo</title>
-
+  <title>
+    
+      UVM_LAB 1 | Yuchen&#39;s Blog
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
   
-    <link rel="apple-touch-icon" href="/images/favicon.png">
-    <link rel="icon" href="/images/favicon.png">
-  
-
-  <!-- Raleway-Font -->
-  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
-
-  <!-- hexo site css -->
-  
-<link rel="stylesheet" href="/css/base.css">
-<link rel="stylesheet" href="/iconfont/iconfont.css">
-<link rel="stylesheet" href="/css/github-markdown.css">
-<link rel="stylesheet" href="/css/highlight.css">
-
-
-  <!-- jquery3.3.1 -->
-  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-
-  <!-- fancybox -->
-  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
-  <script src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
-  
-<script src="/js/fancybox.js"></script>
-
+<link rel="stylesheet" href="/css/style.css">
 
   
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    
+<script src="/js/qrious.js"></script>
 
   
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
 
   
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+    
+<script src="/js/local-search.js"></script>
+
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Yuchen's Blog" type="application/atom+xml">
 </head>
-
-
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
   <body>
-    <div id="app">
-      <div class="header">
-  <div class="avatar">
-    <a href="/"><img src="/images/avatar.jpg" alt=""></a>
-    <div class="nickname"><a href="/">Yuchen</a></div>
-  </div>
-  <div class="navbar">
-    <ul>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Yuchen's Blog</span>
+    </a>
+    <ul class="right-list">
       
-        <li class="nav-item" data-path="/">
-          <a href="/">主页</a>
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
         </li>
       
-        <li class="nav-item" data-path="/archives/">
-          <a href="/archives/">归档</a>
-        </li>
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
       
     </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>UVM_LAB 1</h2>
+  <p class="post-date">2021-09-03</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
   </div>
 </div>
-
-<script src="/js/activeNav.js"></script>
-
-
-      <div class="flex-container">
-        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
-<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
-
-
-
-
-
-
-
-
-
-
-<!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
-<div class="container post-details" id="post-details">
-  <div class="post-content">
-    <div class="post-title">UVM_LAB 1</div>
-    <div class="post-attach">
-      <span class="post-pubtime">2021-09-03</span>
-      <span class="post-tags">
-        
-          <i class="iconfont icon-tags"></i>
-          
-          <span class="span--tag">
-            <a href="/tags/uvm/">
-              #uvm
-            </a>
-          </span>
-          
-        
-      </span>
-    </div>
-    <div class="markdown-body">
-      <h3 id="DUT"><a href="#DUT" class="headerlink" title="DUT"></a>DUT</h3><p><img src="https://img-blog.csdnimg.cn/20190815154630305.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NoaUFva2Fp,size_16,color_FFFFFF,t_70" alt="img"></p>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h3><span id="dut">DUT</span></h3><p><img src="https://img-blog.csdnimg.cn/20190815154630305.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NoaUFva2Fp,size_16,color_FFFFFF,t_70" alt="img"></p>
 <p>DUT是一个16进出的路由器。</p>
-<h4 id="输入时序"><a href="#输入时序" class="headerlink" title="输入时序"></a>输入时序</h4><p>输入时序中，从frame_n拉低开始，在frame_n拉高结束。</p>
+<h4><span id="输入时序">输入时序</span></h4><p>输入时序中，从frame_n拉低开始，在frame_n拉高结束。</p>
 <p>输入时序中，din分为三个部分：（1）addr 占4个周期，（2）pad 占5个周期，（3）data 长度不定。</p>
 <p>输入时序中，valid_n在(1)输入addr阶段时不关注，在(2)输入pad阶段为高，在(3)输入数据阶段指示数据是否有效。</p>
-<p>其中地址4位，范围0~15，表示数据要从哪个dout转发出去。<br><img src="https://img-blog.csdnimg.cn/20190815160900760.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NoaUFva2Fp,size_16,color_FFFFFF,t_70" alt="img" style="zoom:80%;" /></p>
-<h4 id="输出时序"><a href="#输出时序" class="headerlink" title="输出时序"></a>输出时序</h4><p>使用frameo_n下降沿表示开始，frameo_n上升沿表示结束。</p>
+<p>其中地址4位，范围0~15，表示数据要从哪个dout转发出去。<br><img src="https://img-blog.csdnimg.cn/20190815160900760.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NoaUFva2Fp,size_16,color_FFFFFF,t_70" alt="img" style="zoom:80%;"></p>
+<h4><span id="输出时序">输出时序</span></h4><p>使用frameo_n下降沿表示开始，frameo_n上升沿表示结束。</p>
 <p>然后，转发时序中只包含data阶段，在传输过程中valid_n用来指示数据线是否有效。</p>
-<img src="https://img-blog.csdnimg.cn/20190815161828295.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NoaUFva2Fp,size_16,color_FFFFFF,t_70" alt="img" style="zoom:80%;" />
+<img src="https://img-blog.csdnimg.cn/20190815161828295.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NoaUFva2Fp,size_16,color_FFFFFF,t_70" alt="img" style="zoom:80%;">
 
-<h3 id="LAB1"><a href="#LAB1" class="headerlink" title="LAB1"></a>LAB1</h3><p>lab1的任务是创建一个基本的tb。</p>
+<h3><span id="lab1">LAB1</span></h3><p>lab1的任务是创建一个基本的tb。</p>
 <p>先看一下顶层模块的代码</p>
 <figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">program</span> <span class="keyword">automatic</span> test;</span><br><span class="line"><span class="keyword">import</span> uvm_pkg::*;</span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> &quot;packet.sv&quot;</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> &quot;driver.sv&quot;</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> &quot;input_agent.sv&quot;</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> &quot;router_env.sv&quot;</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> &quot;test_collection.sv&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">  <span class="built_in">$timeformat</span>(-<span class="number">9</span>, <span class="number">1</span>, <span class="string">&quot;ns&quot;</span>, <span class="number">10</span>);</span><br><span class="line">  run_test();</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">endprogram</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>可以看到，引用了上面的几个文件，我们按照UVM的系统图来理解一下</p>
 <p><img src="http://colorlesscube.com/wp-content/uploads/ch3-uvm_tb_typical.png" alt="Typical UVM testbench"></p>
-<h4 id="Packet"><a href="#Packet" class="headerlink" title="Packet"></a>Packet</h4><p><strong>packet.sv是一个trans，它定义了uvm中传输的数据包的类型</strong></p>
+<h4><span id="packet">Packet</span></h4><p><strong>packet.sv是一个trans，它定义了uvm中传输的数据包的类型</strong></p>
 <figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> packet <span class="keyword">extends</span> uvm_sequence_item;</span><br><span class="line">    <span class="keyword">rand</span> <span class="keyword">bit</span> [<span class="number">3</span>:<span class="number">0</span>] sa, da;   <span class="comment">//随机化变量，sa、da分别是源地址和目标地址</span></span><br><span class="line">    <span class="keyword">rand</span> <span class="keyword">bit</span>[<span class="number">7</span>:<span class="number">0</span>] payload[$];<span class="comment">//payload是数据包队列</span></span><br><span class="line"></span><br><span class="line">  <span class="meta">`uvm_object_utils_begin(packet)</span></span><br><span class="line">    <span class="meta">`uvm_field_int(sa, UVM_ALL_ON | UVM_NOCOMPARE)//关闭域的比较操作</span></span><br><span class="line">    <span class="meta">`uvm_field_int(da, UVM_ALL_ON)</span></span><br><span class="line">    <span class="meta">`uvm_field_queue_int(payload, UVM_ALL_ON)</span></span><br><span class="line">  <span class="meta">`uvm_object_utils_end</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">constraint</span> valid &#123;</span><br><span class="line">    payload<span class="variable">.size</span> <span class="keyword">inside</span> &#123;[<span class="number">1</span>:<span class="number">10</span>]&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name = <span class="string">&quot;packet&quot;</span>);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name);</span><br><span class="line">    <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line">  <span class="keyword">endfunction</span>: <span class="keyword">new</span></span><br><span class="line"><span class="keyword">endclass</span>: packet</span><br></pre></td></tr></table></figure>
 
 <p> <em><strong>*为什么要使用 field_automation 机制*</strong></em></p>
@@ -127,23 +167,23 @@
 <p>使用 field macros用在utility mcros中，用来将变量（field）在工厂中注册，以指定参与到类的方法的执行的变量，这叫做field_automation，也就是将这些field像类一样在factory中注册；这些方法如print、copy、compare等就可以直接使用这些在factory中注册过的field.</p>
 <p><strong><code>uvm_field_int(arg,flag)**中的int表示该宏使用的数据类型，如果是字符串，则应该定义为：**</code>uvm_field_string</strong>；括号中表示宏的参数arg和flag（至少两个参数），其他类型的宏可以查看UVM参考手册.</p>
 <p>其中arg为变量名，flag为操作模式，可以取以下的值：</p>
-<img src="https://img-blog.csdnimg.cn/20190527155155759.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JsZWF1Y2hhdA==,size_16,color_FFFFFF,t_70" alt="img" style="zoom:50%;" />
+<img src="https://img-blog.csdnimg.cn/20190527155155759.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JsZWF1Y2hhdA==,size_16,color_FFFFFF,t_70" alt="img" style="zoom:50%;">
 
 <p>可以通过位操作符指定域的功能。</p>
-<h4 id="Driver"><a href="#Driver" class="headerlink" title="Driver"></a>Driver</h4><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> driver <span class="keyword">extends</span> uvm_driver <span class="variable">#(packet)</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Register component class into UVM factory.</span></span><br><span class="line">  <span class="meta">`uvm_component_utils(driver)</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name, uvm_component parent);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name, parent);</span><br><span class="line">    <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line">  <span class="keyword">endfunction</span>: <span class="keyword">new</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">task</span> run_phase(uvm_phase phase);</span><br><span class="line">    <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">forever</span> <span class="keyword">begin</span></span><br><span class="line">      seq_item_port<span class="variable">.get_next_item</span>(req);</span><br><span class="line">      send(req);</span><br><span class="line">      seq_item_port<span class="variable">.item_done</span>();</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">endtask</span>: run_phase</span><br><span class="line"></span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">task</span> send(packet pkt);</span><br><span class="line">     <span class="comment">//my code</span></span><br><span class="line">    <span class="meta">`uvm_info(&quot;DRV_RUN&quot;, &#123;&quot;\n&quot;, req.sprint()&#125;, UVM_MEDIUM);</span></span><br><span class="line">  <span class="keyword">endtask</span>: send</span><br><span class="line"></span><br><span class="line"><span class="keyword">endclass</span>: driver</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4><span id="driver">Driver</span></h4><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> driver <span class="keyword">extends</span> uvm_driver <span class="variable">#(packet)</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Register component class into UVM factory.</span></span><br><span class="line">  <span class="meta">`uvm_component_utils(driver)</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name, uvm_component parent);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name, parent);</span><br><span class="line">    <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line">  <span class="keyword">endfunction</span>: <span class="keyword">new</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">task</span> run_phase(uvm_phase phase);</span><br><span class="line">    <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">forever</span> <span class="keyword">begin</span></span><br><span class="line">      seq_item_port<span class="variable">.get_next_item</span>(req);</span><br><span class="line">      send(req);</span><br><span class="line">      seq_item_port<span class="variable">.item_done</span>();</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">endtask</span>: run_phase</span><br><span class="line"></span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">task</span> send(packet pkt);</span><br><span class="line">     <span class="comment">//my code</span></span><br><span class="line">    <span class="meta">`uvm_info(&quot;DRV_RUN&quot;, &#123;&quot;\n&quot;, req.sprint()&#125;, UVM_MEDIUM);</span></span><br><span class="line">  <span class="keyword">endtask</span>: send</span><br><span class="line"></span><br><span class="line"><span class="keyword">endclass</span>: driver</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>在trans中，有三个内置的句柄可以使用。第一个是seq_item_port，这是一个内置的TLM端口，他被参数化以将trans发送给driver。接下来的两个句柄是req和rsp(参数类:packet的句柄)。req句柄用于从序列中提取请求对象。rsp句柄用于向序列发回响应。</p>
 <p>sequence+sequencer+driver的体系可以看这个博客</p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/dreamCll/p/11756761.html">https://www.cnblogs.com/dreamCll/p/11756761.html</a></p>
-<h4 id="input-agent"><a href="#input-agent" class="headerlink" title="input_agent"></a>input_agent</h4><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">class</span> input_agent <span class="keyword">extends</span> uvm_agent;</span><br><span class="line">  <span class="meta">`uvm_component_utils(input_agent)</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">// whenever you are dealing with a parameterized class, it is always a</span></span><br><span class="line">  <span class="comment">// good idea to use the typedef mechanism to hide the parameter for</span></span><br><span class="line">  <span class="comment">// easier handling in the code.  That&#x27;s what you see below.</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">typedef</span> uvm_sequencer<span class="variable">#(packet)</span> packet_sequencer;</span><br><span class="line"></span><br><span class="line">  packet_sequencer sqr;</span><br><span class="line">  driver drv;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name, uvm_component parent);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name, parent);</span><br><span class="line">    <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line">  <span class="keyword">endfunction</span>: <span class="keyword">new</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> build_phase(uvm_phase phase);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.build_phase</span>(phase);</span><br><span class="line">    <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line"></span><br><span class="line">    sqr = packet_sequencer::type_id::create(<span class="string">&quot;sqr&quot;</span>, <span class="keyword">this</span>);</span><br><span class="line">    drv = driver::type_id::create(<span class="string">&quot;drv&quot;</span>, <span class="keyword">this</span>);</span><br><span class="line">  <span class="keyword">endfunction</span>: build_phase</span><br><span class="line"></span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> connect_phase(uvm_phase phase);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.connect_phase</span>(phase);</span><br><span class="line">    <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line">    </span><br><span class="line">      drv<span class="variable">.seq_item_port</span><span class="variable">.connect</span>(sqr<span class="variable">.seq_item_export</span>);</span><br><span class="line">      <span class="comment">//调用connect（）函数，链接driver和sequencer</span></span><br><span class="line">  <span class="keyword">endfunction</span>: connect_phase</span><br><span class="line"></span><br><span class="line"><span class="keyword">endclass</span>: input_agent</span><br></pre></td></tr></table></figure>
+<h4><span id="input_agent">input_agent</span></h4><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">class</span> input_agent <span class="keyword">extends</span> uvm_agent;</span><br><span class="line">  <span class="meta">`uvm_component_utils(input_agent)</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">// whenever you are dealing with a parameterized class, it is always a</span></span><br><span class="line">  <span class="comment">// good idea to use the typedef mechanism to hide the parameter for</span></span><br><span class="line">  <span class="comment">// easier handling in the code.  That&#x27;s what you see below.</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">typedef</span> uvm_sequencer<span class="variable">#(packet)</span> packet_sequencer;</span><br><span class="line"></span><br><span class="line">  packet_sequencer sqr;</span><br><span class="line">  driver drv;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name, uvm_component parent);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name, parent);</span><br><span class="line">    <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line">  <span class="keyword">endfunction</span>: <span class="keyword">new</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> build_phase(uvm_phase phase);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.build_phase</span>(phase);</span><br><span class="line">    <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line"></span><br><span class="line">    sqr = packet_sequencer::type_id::create(<span class="string">&quot;sqr&quot;</span>, <span class="keyword">this</span>);</span><br><span class="line">    drv = driver::type_id::create(<span class="string">&quot;drv&quot;</span>, <span class="keyword">this</span>);</span><br><span class="line">  <span class="keyword">endfunction</span>: build_phase</span><br><span class="line"></span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> connect_phase(uvm_phase phase);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.connect_phase</span>(phase);</span><br><span class="line">    <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line">    </span><br><span class="line">      drv<span class="variable">.seq_item_port</span><span class="variable">.connect</span>(sqr<span class="variable">.seq_item_export</span>);</span><br><span class="line">      <span class="comment">//调用connect（）函数，链接driver和sequencer</span></span><br><span class="line">  <span class="keyword">endfunction</span>: connect_phase</span><br><span class="line"></span><br><span class="line"><span class="keyword">endclass</span>: input_agent</span><br></pre></td></tr></table></figure>
 
 <p>4-6行是源文件的标注，我老是不记得就把他留下来了，这是使用结构体来简化代码中的句柄。需要注意的是</p>
 <p><code>uvm_sequencer#(packet) packet_sequencer;</code></p>
 <p>#（packet）是指传入uvm_sequencer的类型</p>
-<h4 id="router-environment"><a href="#router-environment" class="headerlink" title="router_environment"></a>router_environment</h4><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> router_env <span class="keyword">extends</span> uvm_env;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Environment class should instantiate all required agents.</span></span><br><span class="line">  input_agent i_agt;</span><br><span class="line"></span><br><span class="line">  <span class="meta">`uvm_component_utils(router_env)</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name, uvm_component parent);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name, parent);</span><br><span class="line">    <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line">  <span class="keyword">endfunction</span>: <span class="keyword">new</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> build_phase(uvm_phase phase);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.build_phase</span>(phase);</span><br><span class="line">    <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// All components should be constructed using the factory create() method</span></span><br><span class="line">    i_agt = input_agent::type_id::create(<span class="string">&quot;i_agt&quot;</span>, <span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">endfunction</span>: build_phase</span><br><span class="line"></span><br><span class="line"><span class="keyword">endclass</span>: router_env</span><br></pre></td></tr></table></figure>
+<h4><span id="router_environment">router_environment</span></h4><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> router_env <span class="keyword">extends</span> uvm_env;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Environment class should instantiate all required agents.</span></span><br><span class="line">  input_agent i_agt;</span><br><span class="line"></span><br><span class="line">  <span class="meta">`uvm_component_utils(router_env)</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name, uvm_component parent);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name, parent);</span><br><span class="line">    <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line">  <span class="keyword">endfunction</span>: <span class="keyword">new</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> build_phase(uvm_phase phase);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.build_phase</span>(phase);</span><br><span class="line">    <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// All components should be constructed using the factory create() method</span></span><br><span class="line">    i_agt = input_agent::type_id::create(<span class="string">&quot;i_agt&quot;</span>, <span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">endfunction</span>: build_phase</span><br><span class="line"></span><br><span class="line"><span class="keyword">endclass</span>: router_env</span><br></pre></td></tr></table></figure>
 
 <p>在environment中应当实例化所有的agent</p>
-<h4 id="test-collection"><a href="#test-collection" class="headerlink" title="test_collection"></a>test_collection</h4><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> test_base <span class="keyword">extends</span> uvm_test;</span><br><span class="line">  <span class="meta">`uvm_component_utils(test_base)</span></span><br><span class="line"></span><br><span class="line">  router_env env;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name, uvm_component parent);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name, parent);</span><br><span class="line">    <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line">  <span class="keyword">endfunction</span>: <span class="keyword">new</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> build_phase(uvm_phase phase);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.build_phase</span>(phase);</span><br><span class="line">    <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line">    env = router_env::type_id::create(<span class="string">&quot;env&quot;</span>, <span class="keyword">this</span>);</span><br><span class="line">  <span class="keyword">endfunction</span>: build_phase</span><br><span class="line"></span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> start_of_simulation_phase(uvm_phase phase);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.start_of_simulation_phase</span>(phase);</span><br><span class="line">    <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line">    <span class="keyword">if</span> (uvm_report_enabled(UVM_MEDIUM, UVM_INFO, <span class="string">&quot;TOPOLOGY&quot;</span>)) <span class="keyword">begin</span></span><br><span class="line">        uvm_root::get()<span class="variable">.print_topology</span>();<span class="comment">//打印UVM树</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">if</span> (uvm_report_enabled(UVM_MEDIUM, UVM_INFO, <span class="string">&quot;FACTORY&quot;</span>)) <span class="keyword">begin</span></span><br><span class="line">        uvm_factory::get()<span class="variable">.print</span>();<span class="comment">//打印注册关系</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">endfunction</span>: start_of_simulation_phase</span><br><span class="line"><span class="keyword">endclass</span>: test_base</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4><span id="test_collection">test_collection</span></h4><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> test_base <span class="keyword">extends</span> uvm_test;</span><br><span class="line">  <span class="meta">`uvm_component_utils(test_base)</span></span><br><span class="line"></span><br><span class="line">  router_env env;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name, uvm_component parent);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name, parent);</span><br><span class="line">    <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line">  <span class="keyword">endfunction</span>: <span class="keyword">new</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> build_phase(uvm_phase phase);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.build_phase</span>(phase);</span><br><span class="line">    <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line">    env = router_env::type_id::create(<span class="string">&quot;env&quot;</span>, <span class="keyword">this</span>);</span><br><span class="line">  <span class="keyword">endfunction</span>: build_phase</span><br><span class="line"></span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> start_of_simulation_phase(uvm_phase phase);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.start_of_simulation_phase</span>(phase);</span><br><span class="line">    <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line">    <span class="keyword">if</span> (uvm_report_enabled(UVM_MEDIUM, UVM_INFO, <span class="string">&quot;TOPOLOGY&quot;</span>)) <span class="keyword">begin</span></span><br><span class="line">        uvm_root::get()<span class="variable">.print_topology</span>();<span class="comment">//打印UVM树</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">if</span> (uvm_report_enabled(UVM_MEDIUM, UVM_INFO, <span class="string">&quot;FACTORY&quot;</span>)) <span class="keyword">begin</span></span><br><span class="line">        uvm_factory::get()<span class="variable">.print</span>();<span class="comment">//打印注册关系</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">endfunction</span>: start_of_simulation_phase</span><br><span class="line"><span class="keyword">endclass</span>: test_base</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
@@ -154,98 +194,188 @@
 <p>关于verbosity可以看这个博客</p>
 <p><a target="_blank" rel="noopener" href="https://east1203.github.io/2019/07/22/Verification/UVM/UVM%E2%80%94%E2%80%94%E6%8E%A7%E5%88%B6%E6%89%93%E5%8D%B0%E4%BF%A1%E6%81%AF/">https://east1203.github.io/2019/07/22/Verification/UVM/UVM%E2%80%94%E2%80%94%E6%8E%A7%E5%88%B6%E6%89%93%E5%8D%B0%E4%BF%A1%E6%81%AF/</a></p>
 </blockquote>
-
-    </div>
+</section>
+    <!-- Tags START -->
     
-      <div class="prev-or-next">
-        <div class="post-foot-next">
-          
-        </div>
-        <div class="post-attach">
-          <span class="post-pubtime">2021-09-03</span>
-          <span class="post-tags">
-            
-              <i class="iconfont icon-tags"></i>
-              
-              <span class="span--tag">
-                <a href="/tags/uvm/">
-                  #uvm
-                </a>
-              </span>
-              
-            
-          </span>
-        </div>
-        <div class="post-foot-prev">
-          
-            <a href="/2021/09/03/UVM/" target="_self">
-              <span>NEXT</span>
-              <i class="iconfont icon-chevronright"></i>
-            </a>
-          
-        </div>
-      </div>
-    
-  </div>
-  
-  <div class="post-catalog" id="catalog">
-    <div class="title">目录</div>
-    <div class="catalog-content">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">DUT</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">输入时序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">输出时序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">LAB1</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">Packet</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">Driver</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">input_agent</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">router_environment</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">test_collection</span></a></li></ol></li></ol>
-    </div>
-  </div>
-
-  <script src="/js/catalog.js"></script>
-
-
-
-  
-    <div class="comments-container">
-      
-
-
-
-
-
-    </div>
-  
-</div>
-
-
-        <div class="footer">
-  <div class="social">
-    <ul>
-      
-        <li>
-          <a title="email" href="927370850@qq.com">
-            <i class="iconfont icon-envelope"></i>
-          </a>
-        </li>
-      
-    </ul>
-  </div>
-  
-    <div class="footer-more">
-      <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © Oranges 2020</a>
-    </div>
-  
-    <div class="footer-more">
-      <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
-    </div>
-  
-</div>
-
-      </div>
-
-      <div class="back-to-top hidden">
-  <a href="javascript: void(0)">
-    <i class="iconfont icon-chevronup"></i>
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#uvm" >
+    <span class="tag-code">uvm</span>
   </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+    
+      <a class="nav-right" href="/2021/09/03/UVM/">
+        
+          UVM
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo=""
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-text">DUT</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-text">输入时序</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-text">输出时序</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-text">LAB1</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-text">Packet</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-text">Driver</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-text">input_agent</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-text">router_environment</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-text">test_collection</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://example.com/2021/09/03/1/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+  <script>
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  </script>
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
 </div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2021 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
 
-<script src="/js/backtotop.js"></script>
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({useBR: true});
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
 
 
-    </div>
+<script src="/js/script.js"></script>
+
+
   </body>
 </html>
