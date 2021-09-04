@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="水是有毒的">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      UVM_LAB 2 | Yuchen&#39;s Blog
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    
+<script src="/js/qrious.js"></script>
+
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+  
+    
+<script src="/js/local-search.js"></script>
+
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Yuchen's Blog" type="application/atom+xml">
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Yuchen's Blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>UVM_LAB 2</h2>
+  <p class="post-date">2021-09-04</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>在第一个lab结束后，我们建立了一个最基本的UVM tb，但这个框架基本上完成不了其他的任务，因此，在第二个lab中，我们需要加入trans class和sequence class。</p>
+<h3><span id="manage-class-files">Manage Class Files</span></h3><p>实验的第一步是通过打包来管理class files。在lab1中，我们将类文件放在test.sv中，这导致一旦有新的类文件加入就需要修改test文件，显然是不方便的。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">program</span> <span class="keyword">automatic</span> test;</span><br><span class="line"><span class="keyword">import</span> uvm_pkg::*;</span><br><span class="line"></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> &quot;packet.sv&quot;</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> &quot;driver.sv&quot;</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> &quot;input_agent.sv&quot;</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> &quot;router_env.sv&quot;</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> &quot;test_collection.sv&quot;</span></span><br><span class="line"><span class="comment">//类文件</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">  <span class="built_in">$timeformat</span>(-<span class="number">9</span>, <span class="number">1</span>, <span class="string">&quot;ns&quot;</span>, <span class="number">10</span>);</span><br><span class="line">  run_test();</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">endprogram</span></span><br></pre></td></tr></table></figure>
+
+<p>因此，考虑将类文件装在package中进行管理，lab2中使用了三个包，分别是router_env_pkg、router_stimulus_pkg、和router_test_pkg。</p>
+<p>router_env_pkg</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> router_env_pkg;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> uvm_pkg::*;</span><br><span class="line"><span class="keyword">import</span> router_stimulus_pkg::*;</span><br><span class="line"></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> &quot;driver.sv&quot;</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> &quot;input_agent.sv&quot;</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> &quot;router_env.sv&quot;//管理driver、agent、env</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">endpackage</span></span><br></pre></td></tr></table></figure>
+
+<p>router_stimulus_pkg</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> router_stimulus_pkg;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> uvm_pkg::*;</span><br><span class="line"></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> &quot;packet.sv&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> &quot;packet_sequence.sv&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> &quot;packet_da_3.sv&quot;//管理trans相关的包</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">endpackage</span></span><br></pre></td></tr></table></figure>
+
+<p>router_test_pkg</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> router_test_pkg;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> uvm_pkg::*;</span><br><span class="line"><span class="keyword">import</span> router_stimulus_pkg::*;</span><br><span class="line"><span class="keyword">import</span> router_env_pkg::*;</span><br><span class="line"></span><br><span class="line"><span class="meta">`<span class="meta-keyword">include</span> &quot;test_collection.sv&quot;//包含上面两个包以及测试文件</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">endpackage</span></span><br></pre></td></tr></table></figure>
+
+<p>在使用包来管理类之后，test文件就只需要import两个包，方便很多</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> uvm_pkg::*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> router_test_pkg::*;</span><br></pre></td></tr></table></figure>
+
+<h3><span id="register-packet-class">Register Packet Class</span></h3><p>在packet文件中加入注册和build的部分</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// All transaction classes must be extended from the uvm_sequence_item base class.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> packet <span class="keyword">extends</span> uvm_sequence_item;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// This class contain 4-bit sa (source address) and da (destination address) fields.</span></span><br><span class="line">  <span class="comment">// The payload field is a queue of 8-bit variable.</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">rand</span> <span class="keyword">bit</span> [<span class="number">3</span>:<span class="number">0</span>] sa, da;</span><br><span class="line">  <span class="keyword">rand</span> <span class="keyword">bit</span>[<span class="number">7</span>:<span class="number">0</span>] payload[$];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// Register the class into the UVM factory and enable the fields</span></span><br><span class="line">  <span class="meta">`uvm_object_utils_begin(packet)</span></span><br><span class="line">    <span class="meta">`uvm_field_int(sa, UVM_ALL_ON | UVM_NOCOMPARE)</span></span><br><span class="line">    <span class="meta">`uvm_field_int(da, UVM_ALL_ON)</span></span><br><span class="line">    <span class="meta">`uvm_field_queue_int(payload, UVM_ALL_ON)</span></span><br><span class="line">  <span class="meta">`uvm_object_utils_end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// To make viewing the success of the labs a little easier, the payload size is</span></span><br><span class="line">  <span class="comment">// restricted to 1 to 10 bytes.</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">constraint</span> valid &#123;</span><br><span class="line">    payload<span class="variable">.size</span> <span class="keyword">inside</span> &#123;[<span class="number">1</span>:<span class="number">10</span>]&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Since this is not a component class, there can only be one argument in the</span></span><br><span class="line">  <span class="comment">// constructor signature.  This string argument must be defaulted to the class name.</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name = <span class="string">&quot;packet&quot;</span>);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name);</span><br><span class="line">    <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line">  <span class="keyword">endfunction</span>: <span class="keyword">new</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">endclass</span>: packet</span><br></pre></td></tr></table></figure>
+
+<p>另外注意到，由于trans类不是uvm_component，没有办法调用build_phase，因此在例化的时候需要使用new函数。</p>
+<h3><span id="execute-tests-with-override">Execute tests with override</span></h3><p>可以看到，在定义了packet这个类之后，我们就能自由的产生我们需要的数据了，lab2中生成了一个接收地址为3的packet：packet_da_3。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> packet_da_3 <span class="keyword">extends</span> packet;</span><br><span class="line">  <span class="meta">`uvm_object_utils(packet_da_3)</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">constraint</span> da_3 &#123;</span><br><span class="line">    da == <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name = <span class="string">&quot;packet_da_3&quot;</span>);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name);</span><br><span class="line">   <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line">  <span class="keyword">endfunction</span>: <span class="keyword">new</span></span><br><span class="line"><span class="keyword">endclass</span>: packet_da_3</span><br></pre></td></tr></table></figure>
+
+<p>在这个包中，通过限定constraint函数的约束条件，使得da等于三。</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#uvm" >
+    <span class="tag-code">uvm</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2021/09/03/UVM/">
+        <span class="nav-arrow">← </span>
+        
+          UVM
+        
+      </a>
+    
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo=""
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-text">Manage Class Files</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-text">Register Packet Class</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-text">Execute tests with override</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://example.com/2021/09/04/2/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+  <script>
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  </script>
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2021 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({useBR: true});
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>
