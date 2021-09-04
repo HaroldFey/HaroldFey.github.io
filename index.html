@@ -20,10 +20,6 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
-    
-<link rel="stylesheet" href="/css/plugins/gitment.css">
-
-  
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
@@ -32,10 +28,6 @@
 <script src="/js/qrious.js"></script>
 
   
-  
-    
-<script src="/js/gitment.js"></script>
-
   
   
   
@@ -221,10 +213,14 @@ DUT是一个16进出的路由器。
     <footer class="app-footer">
   <p class="copyright">
     &copy; 2021 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
-    <br>
-    Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a>
+      <br>
+      Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a>
   </p>
 </footer>
+
+<script src="https://utteranc.es/client.js" repo="HaroldFey / HaroldFey.github.io" issue-term="pathname"
+  theme="github-light" crossorigin="anonymous" async>
+  </script>
 
 <script>
   function async(u, c) {
@@ -237,20 +233,20 @@ DUT是一个16进出的路由器。
   }
 </script>
 <script>
-  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function () {
     FastClick.attach(document.body);
   })
 </script>
 
 <script>
   var hasLine = 'true';
-  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
-    $('figure pre').each(function(i, block) {
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function () {
+    $('figure pre').each(function (i, block) {
       var figure = $(this).parents('figure');
       if (hasLine === 'false') {
         figure.find('.gutter').hide();
       }
-      hljs.configure({useBR: true});
+      hljs.configure({ useBR: true });
       var lang = figure.attr('class').split(' ')[1] || 'code';
       var codeHtml = $(this).html();
       var codeTag = document.createElement('code');
@@ -264,9 +260,13 @@ DUT是一个16进出的路由器。
 </script>
 <!-- Baidu Tongji -->
 
-
+    
 <script src="/js/script.js"></script>
 
 
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      <span id="busuanzi_container_site_pv"><br>
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      </span>
   </body>
 </html>
