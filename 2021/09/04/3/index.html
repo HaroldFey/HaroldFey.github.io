@@ -144,7 +144,7 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><p>在lab3中，需要创建物理接口以驱动。</p>
+    <section class="markdown-content"><p>在lab3中，需要创建物理接口以及驱动。</p>
 <h3><span id="interface">Interface</span></h3><h4><span id="port_id">port_id</span></h4><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">virtual</span> router_io vif;           <span class="comment">// DUT virtual interface</span></span><br><span class="line"><span class="keyword">int</span>     port_id = -<span class="number">1</span>;            <span class="comment">// Driver&#x27;s designated port</span></span><br></pre></td></tr></table></figure>
 
 <p>这里port_id的作用是，当port_id介于0~15（dut的端口值时，driver只会驱动地址相同的packet，而当地址port_id为-1时，driver接收所有packet并将其发送到对应端口）</p>
@@ -204,7 +204,7 @@
 
 <p>这里面有一些不太懂的==uvm_event，analysis_port.write，还有一个is_active不知道是哪里来的，后面要查下用法==</p>
 <p>（待补充）</p>
-<p>__本文作者__：Yuchen<br>__本文地址__： <a href="http://example.com/2021/09/04/3/">http://example.com/2021/09/04/3/</a> <br>__版权声明__：转载请注明出处！</p>
+<p>__本文作者__：Yuchen <a href="http://example.com/2021/09/04/3/">http://example.com/2021/09/04/3/</a> <br>__版权声明__：转载请注明出处！</p>
 </section>
     <!-- Tags START -->
     
