@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta name="google-site-verification" content="oKPi6gPtg3EkGAMl-OwnmMFR-e-Rv1C72DKQiDimfR4" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="水是有毒的">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+      <link rel="shortcut icon" href="/css/images/logo.png">
+        
+          <title>
+            
+              UVM_LAB 4 | Yuchen&#39;s Blog
+                  
+          </title>
+          <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+          <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+          <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css"
+            rel="stylesheet">
+          
+<link rel="stylesheet" href="/css/style.css">
+
+            
+                  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+                  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+                  
+                    
+<script src="/js/qrious.js"></script>
+
+                      
+                        
+                              
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+                                
+                                  
+    
+<script src="/js/local-search.js"></script>
+
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Yuchen's Blog" type="application/atom+xml">
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Yuchen's Blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>UVM_LAB 4</h2>
+  <p class="post-date">2021-09-06</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>在第四个lab中我们需要加入monitor和scoreboard来自检</p>
+<h2><span id="monitor">Monitor</span></h2><p>需要有两个monitor，一个监控输入dut的信号，称为iMontor；一个监控dut输出的信号，称为OMonitor。</p>
+<h3><span id="imonitor">iMonitor</span></h3><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">uvm_analysis_port <span class="variable">#(packet)</span> analysis_port;<span class="comment">//创建端口</span></span><br><span class="line">analysis_port = <span class="keyword">new</span>(<span class="string">&quot;analysis_port&quot;</span>, <span class="keyword">this</span>);<span class="comment">//初始化端口</span></span><br></pre></td></tr></table></figure>
+
+<p>由于TLM端口在UVM中没有factory机制，因此只能用new()而不能用create()。</p>
+<h4><span id="run_phase">run_phase</span></h4><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="keyword">task</span> run_phase(uvm_phase phase);</span><br><span class="line"></span><br><span class="line">  packet tr;</span><br><span class="line">  <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">forever</span> <span class="keyword">begin</span></span><br><span class="line">  </span><br><span class="line">    tr = packet::type_id::create(<span class="string">&quot;tr&quot;</span>, <span class="keyword">this</span>);</span><br><span class="line">    tr<span class="variable">.sa</span> = <span class="keyword">this</span><span class="variable">.port_id</span>;</span><br><span class="line">    get_packet(tr);</span><br><span class="line">    <span class="meta">`uvm_info(&quot;Got_Input_Packet&quot;, &#123;&quot;\n&quot;, tr.sprint()&#125;, UVM_MEDIUM);</span></span><br><span class="line">    analysis_port<span class="variable">.write</span>(tr);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endtask</span>: run_phase</span><br></pre></td></tr></table></figure>
+
+<p>输入监视器的作用是观察各个端口的输入信号，并将他们储存在一个对象tr中。</p>
+<p>设置源地址字段后，调用get_packet()检索观察到的trans。然后，显示观察到的事务的内容，并通过调用其write()方法，通过TLM分析端口(analysis_port)将观察到的事务传递给所有其他感兴趣的组件。</p>
+<h4><span id="get_packet">Get_packet</span></h4><img src="https://img-blog.csdnimg.cn/20190815160900760.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1NoaUFva2Fp,size_16,color_FFFFFF,t_70" alt="img" style="zoom:67%;">
+
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">wait</span> (vif<span class="variable">.iMonClk</span><span class="variable">.frame_n</span>[port_id] !==<span class="number">0</span>);</span><br><span class="line">  @(vif<span class="variable">.iMonClk</span> <span class="keyword">iff</span> (vif<span class="variable">.iMonClk</span><span class="variable">.frame_n</span>[port_id] === <span class="number">0</span>));</span><br></pre></td></tr></table></figure>
+
+<p>等待阶段，等待frame_n拉高开始准备，等frame_n拉低时开始，其中iff的用法如下</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@(<span class="keyword">posedge</span> clk <span class="keyword">iff</span>(vld));</span><br><span class="line">do_something;</span><br></pre></td></tr></table></figure>
+
+<p>等于</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">forever</span> <span class="keyword">begin</span></span><br><span class="line">	@(<span class="keyword">posedge</span> clk);</span><br><span class="line">	<span class="keyword">if</span>(vld)</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">do_something;</span><br></pre></td></tr></table></figure>
+
+<p>但事件表达式仅仅在 <code>iff</code> 之后的表达式为真时才会触发，在上面的例子中就是 <code>vld</code> 等于 1 的情况。注意：这个表达式只有在 <code>vld</code> 发生变化时计算，而不是 <code>clk</code> 发生变化的时候。</p>
+<p>记录目标地址</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">4</span>; i++) <span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">if</span> (!vif<span class="variable">.iMonClk</span><span class="variable">.frame_n</span>[port_id]) <span class="keyword">begin</span></span><br><span class="line">    tr<span class="variable">.da</span>[i] = vif<span class="variable">.iMonClk</span><span class="variable">.din</span>[port_id];</span><br><span class="line">  <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">    <span class="meta">`uvm_fatal(&quot;Header_Error&quot;, $sformatf(&quot;@ Header cycle %0d, Frame not zero&quot;, i));</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  @(vif<span class="variable">.iMonClk</span>);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>有效性检查</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++) <span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">if</span> (!vif<span class="variable">.iMonClk</span><span class="variable">.frame_n</span>[port_id]) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> (vif<span class="variable">.iMonClk</span><span class="variable">.valid_n</span>[port_id] &amp;&amp; vif<span class="variable">.iMonClk</span><span class="variable">.din</span>[port_id]) <span class="keyword">begin</span></span><br><span class="line">      @(vif<span class="variable">.iMonClk</span>);</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">      <span class="meta">`uvm_fatal(&quot;Header_Error&quot;, $sformatf(&quot;@%0d Valid or Din zero&quot;, i));</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">    <span class="meta">`uvm_fatal(&quot;Header_Error&quot;, &quot;Frame not zero&quot;);</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>记录数据</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">forever</span> <span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">8</span>; i=i) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> (!vif<span class="variable">.iMonClk</span><span class="variable">.valid_n</span>[port_id]) <span class="keyword">begin</span></span><br><span class="line">      <span class="keyword">if</span> (vif<span class="variable">.iMonClk</span><span class="variable">.busy_n</span>[port_id]) <span class="keyword">begin</span></span><br><span class="line">        datum[i++] = vif<span class="variable">.iMonClk</span><span class="variable">.din</span>[port_id];</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">8</span>) <span class="keyword">begin</span></span><br><span class="line">          tr<span class="variable">.payload</span><span class="variable">.push_back</span>(datum);</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">      <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="meta">`uvm_fatal(&quot;Payload_Error&quot;, &quot;Busy &amp; Valid conflict&quot;);</span></span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">if</span> (vif<span class="variable">.iMonClk</span><span class="variable">.frame_n</span>[port_id]) <span class="keyword">begin</span></span><br><span class="line">      <span class="keyword">if</span> (i == <span class="number">8</span>) <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="meta">`uvm_fatal(&quot;Payload_Error&quot;, &quot;Not byte aligned&quot;);</span></span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    @(vif<span class="variable">.iMonClk</span>);</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>之后再input_agent中加入端口和monitor，使用is_active来判断agent状态，再例化组件</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iMonitor mon;</span><br><span class="line">uvm_analysis_port <span class="variable">#(packet)</span> analysis_port;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (is_active == UVM_ACTIVE) <span class="keyword">begin</span></span><br><span class="line">sqr = packet_sequencer::type_id::create(<span class="string">&quot;sqr&quot;</span>, <span class="keyword">this</span>);</span><br><span class="line">drv = driver::type_id::create(<span class="string">&quot;drv&quot;</span>, <span class="keyword">this</span>);</span><br></pre></td></tr></table></figure>
+
+<p>在任何状态下例化monitor和port</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mon = iMonitor::type_id::create(<span class="string">&quot;mon&quot;</span>, <span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">analysis_port = <span class="keyword">new</span>(<span class="string">&quot;analysis_port&quot;</span>, <span class="keyword">this</span>);</span><br></pre></td></tr></table></figure>
+
+<p>连接driver和sequencer的端口</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (is_active == UVM_ACTIVE) <span class="keyword">begin</span></span><br><span class="line">  drv<span class="variable">.seq_item_port</span><span class="variable">.connect</span>(sqr<span class="variable">.seq_item_export</span>);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>连接monitor的分析端口和agent的分析端口</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mon<span class="variable">.analysis_port</span><span class="variable">.connect</span>(<span class="keyword">this</span><span class="variable">.analysis_port</span>);</span><br></pre></td></tr></table></figure>
+
+<h2><span id="environment">Environment</span></h2><p>创建对应的组件</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">input_agent i_agt[<span class="number">16</span>];</span><br><span class="line">scoreboard sb;<span class="comment">//伞兵</span></span><br><span class="line">output_agent o_agt[<span class="number">16</span>];</span><br></pre></td></tr></table></figure>
+
+<p>配置初始化阶段执行的sequence，主阶段执行另一个sequence</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span> (i_agt[i]) <span class="keyword">begin</span></span><br><span class="line">  i_agt[i] = input_agent::type_id::create(<span class="built_in">$sformatf</span>(<span class="string">&quot;i_agt[%0d]&quot;</span>, i), <span class="keyword">this</span>);</span><br><span class="line">  uvm_config_db <span class="variable">#(int)::set(this, i_agt[i].get_name(), &quot;port_id&quot;, i)</span>;</span><br><span class="line">  uvm_config_db <span class="variable">#(uvm_object_wrapper)::set(this, &#123;i_agt[i].get_name(), &quot;.&quot;, &quot;sqr.reset_phase&quot;&#125;, &quot;default_sequence&quot;, router_input_port_reset_sequence::get_type())</span>;</span><br><span class="line">  uvm_config_db <span class="variable">#(uvm_object_wrapper)::set(this, &#123;i_agt[i].get_name(), &quot;.&quot;, &quot;sqr.main_phase&quot;&#125;, &quot;default_sequence&quot;, packet_sequence::get_type())</span>;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>连接agent到sb</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span> (i_agt[i]) <span class="keyword">begin</span></span><br><span class="line">  i_agt[i]<span class="variable">.analysis_port</span><span class="variable">.connect</span>(sb<span class="variable">.before_export</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">foreach</span> (o_agt[i]) <span class="keyword">begin</span></span><br><span class="line">  o_agt[i]<span class="variable">.analysis_port</span><span class="variable">.connect</span>(sb<span class="variable">.after_export</span>);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<h2><span id="scoreboard">Scoreboard</span></h2><p>创建两个端口，用于连接iMonitor和oMonitor。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">uvm_analysis_export <span class="variable">#(packet)</span> before_export;</span><br><span class="line">uvm_analysis_export <span class="variable">#(packet)</span> after_export;</span><br></pre></td></tr></table></figure>
+
+<p>连接</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span><span class="variable">.before_export</span><span class="variable">.connect</span>(comparator<span class="variable">.before_export</span>);</span><br><span class="line"><span class="keyword">this</span><span class="variable">.after_export</span><span class="variable">.connect</span>(comparator<span class="variable">.after_export</span>); </span><br></pre></td></tr></table></figure>
+
+<h2><span id="test_collection">Test_collection</span></h2><p>改变agent配置</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">uvm_config_db<span class="variable">#(virtual router_io)::set(this, &quot;env.i_agt[*]&quot;, &quot;vif&quot;, router_vif)</span>;</span><br><span class="line"></span><br><span class="line"> uvm_config_db<span class="variable">#(virtual router_io)::set(this, &quot;env.o_agt[*]&quot;, &quot;vif&quot;, router_vif)</span>;</span><br><span class="line"></span><br><span class="line"> uvm_config_db<span class="variable">#(virtual reset_io)::set(this, &quot;env.r_agt&quot;, &quot;vif&quot;, reset_vif)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>Shut_down phase</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="keyword">task</span> shutdown_phase(uvm_phase phase);</span><br><span class="line">  <span class="keyword">super</span><span class="variable">.shutdown_phase</span>(phase);</span><br><span class="line">  <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line"></span><br><span class="line">  phase<span class="variable">.raise_objection</span>(<span class="keyword">this</span>);</span><br><span class="line">  env<span class="variable">.sb</span><span class="variable">.wait_for_done</span>();</span><br><span class="line">  phase<span class="variable">.drop_objection</span>(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">endtask</span>: shutdown_phase</span><br></pre></td></tr></table></figure>
+
+<p>==这样的测试存在一个问题，就是当生成了160个包，但实际只会输出159个包，也就是会丢掉一个包。==</p>
+<p>问题在于object这个机制是在input的位置raise和drop的，一旦输入完成，uvm就认为模拟结束了。</p>
+<p>有几种办法可以解决这个问题，一种是设置drain time，具体可以参考。简单来说就是在drop object和结束模拟之间加一段时间，从而解决延迟的问题。</p>
+<blockquote>
+<p>关于drain time 可以看这个博客</p>
+<p><a target="_blank" rel="noopener" href="https://blog.verificationgentleman.com/2014/04/uvm-drain-time-old-fashioned-way.html">https://blog.verificationgentleman.com/2014/04/uvm-drain-time-old-fashioned-way.html</a></p>
+</blockquote>
+<p>具体方法是多加一个main_phase，里面设置drain time</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="keyword">task</span> main_phase(uvm_phase phase);</span><br><span class="line">  uvm_objection objection;</span><br><span class="line">  <span class="keyword">super</span><span class="variable">.main_phase</span>(phase);</span><br><span class="line">  <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line"></span><br><span class="line">  objection = phase<span class="variable">.get_objection</span>();</span><br><span class="line">  objection<span class="variable">.set_drain_time</span>(<span class="keyword">this</span>, <span class="number">1</span>us);</span><br><span class="line"></span><br><span class="line"><span class="keyword">endtask</span>: main_phase</span><br></pre></td></tr></table></figure>
+
+<p>另一种是直接确定比较器中已经没有进程了，这种方法比较直接。</p>
+<p>重载scoreboard</p>
+<p>由于这个实验中确定mismatch与输入的packet的顺序有关，因此需要重载一个乱序的sb</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set_type_override_by_type(scoreboard::get_type(), ms_scoreboard::get_type());</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>关于重载</p>
+<p><a target="_blank" rel="noopener" href="http://www.dvagent.com/forum.php?mod=viewthread&amp;tid=276">http://www.dvagent.com/forum.php?mod=viewthread&amp;tid=276</a></p>
+</blockquote>
+<p>这里使用了</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`uvm_analysis_imp_decl</span></span><br></pre></td></tr></table></figure>
+
+<p>这个宏，具体用法见</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://verificationacademy.com/verification-methodology-reference/uvm/docs_1.2/html/files/macros/uvm_tlm_defines-svh.html#%60uvm_analysis_imp_decl">https://verificationacademy.com/verification-methodology-reference/uvm/docs_1.2/html/files/macros/uvm_tlm_defines-svh.html#%60uvm_analysis_imp_decl</a></p>
+</blockquote>
+<p>主要功能是让不同端口实现不同功能。</p>
+<p>==在执行过程中是怎么遍历的所有的port的，他们的顺序是怎样的？==</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#uvm" >
+    <span class="tag-code">uvm</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2021/09/04/3/">
+        <span class="nav-arrow">← </span>
+        
+          UVM_LAB 3
+        
+      </a>
+    
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo="HaroldFey/HaroldFey.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-text">Monitor</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-text">iMonitor</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-text">run_phase</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-text">Get_packet</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-text">Environment</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-text">Scoreboard</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-text">Test_collection</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://example.com/2021/09/06/4/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+  <script>
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  </script>
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2021 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+      <br>
+      Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script src="https://utteranc.es/client.js" repo="HaroldFey / HaroldFey.github.io" issue-term="pathname"
+  theme="github-light" crossorigin="anonymous" async>
+  </script>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function () {
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function () {
+    $('figure pre').each(function (i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({ useBR: true });
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+    
+<script src="/js/script.js"></script>
+
+
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      <span id="busuanzi_container_site_pv"><br>
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      </span>
+  </body>
+</html>
