@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta name="google-site-verification" content="oKPi6gPtg3EkGAMl-OwnmMFR-e-Rv1C72DKQiDimfR4" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="水是有毒的">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+      <link rel="shortcut icon" href="/css/images/logo.png">
+        
+          <title>
+            
+              UVM_LAB 5 | Yuchen&#39;s Blog
+                  
+          </title>
+          <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+          <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+          <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css"
+            rel="stylesheet">
+          
+<link rel="stylesheet" href="/css/style.css">
+
+            
+                  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+                  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+                  
+                    
+<script src="/js/qrious.js"></script>
+
+                      
+                        
+                              
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+                                
+                                  
+    
+<script src="/js/local-search.js"></script>
+
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Yuchen's Blog" type="application/atom+xml">
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Yuchen's Blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>UVM_LAB 5</h2>
+  <p class="post-date">2021-09-07</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h2><span id="重置sequence">重置Sequence</span></h2><p>首先需要创建一个顶层的reset_sequence来管理下面的reset_sequence 和router_input_port_reset_sequence的执行。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> top_reset_sequence <span class="keyword">extends</span> uvm_sequence;</span><br><span class="line">  <span class="meta">`uvm_object_utils(top_reset_sequence)</span></span><br><span class="line"></span><br><span class="line">  <span class="meta">`uvm_declare_p_sequencer(top_reset_sequencer)</span></span><br><span class="line"></span><br><span class="line">  reset_sequence                    r_seq;</span><br><span class="line">  router_input_port_reset_sequence  i_seq;</span><br></pre></td></tr></table></figure>
+
+<p>因此使用virtual sequence进行进度管理。</p>
+<p>创建一个q_sequence指针，用来指向top_reset_sequencer中的两个sequence。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fork</span></span><br><span class="line">  <span class="meta">`uvm_do_on(r_seq, p_sequencer.r_sqr);</span></span><br><span class="line">  <span class="keyword">foreach</span> (p_sequencer<span class="variable">.pkt_sqr</span>[i]) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">fork</span></span><br><span class="line">      <span class="keyword">int</span> j = i;</span><br><span class="line">      <span class="keyword">begin</span></span><br><span class="line">        reset_event<span class="variable">.wait_on</span>();</span><br><span class="line">        <span class="meta">`uvm_do_on(i_seq, p_sequencer.pkt_sqr[j]);</span></span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">join_none</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">join</span></span><br></pre></td></tr></table></figure>
+
+<p>之后现将r_seq发送给r_sqr，再遍历pkt_sqr，执行i_seq。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">uvm_config_db <span class="variable">#(uvm_object_wrapper)::set(this, &quot;env.r_agt.sqr.reset_phase&quot;, &quot;default_sequence&quot;, null)</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">uvm_config_db <span class="variable">#(uvm_object_wrapper)::set(this, &quot;env.i_agt[*].sqr.reset_phase&quot;, &quot;default_sequence&quot;, null)</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">uvm_config_db <span class="variable">#(uvm_object_wrapper)::set(this, &quot;top_reset_sqr.reset_phase&quot;, &quot;default_sequence&quot;, top_reset_sequence::get_type())</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>取消之前的设置，并将top_reset_sqr的reset_phase设为执行top_reset_sequence。</p>
+<p>关于 uvm_config_db #(uvm_object_wrapper)::set</p>
+<blockquote>
+<p>uvm_config_db#(int)::set(this, “env.i_agt.drv”, “pre_num”, 100);</p>
+<p>四个参数，set寄信，get收信。</p>
+<p>第一个和第二个参数联合起来组成目标路径，与此路径符合的目标才能收信。第一个参数必须是一个uvm_component实例的指针，第二个参数是相对此实例的路径。第三个参数表示一个记号，用以说明这个值是传给目标中的哪个成员的，第四个参数是要设置的值。</p>
+<p>uvm_config_db#(int)::get(this, “”, “pre_num”, pre_num);</p>
+<p>四个参数中，第一个参数，通常可以为 “this”, “null”等实例的指针。</p>
+<p>第二个参数，可以为空“”， 也可以用通配符，如截图中的例子，”*yy_agent” “yy_agent.drv”</p>
+<p>set 与get的第一个到第三个参数“寄信”与“收信”要符合两个条件：时间的匹配，一定是先寄信再收信，为了避免出错，一般get前最好加判断，2 标记一致，也就是邮件目的地是匹配的。</p>
+<p>第三个，往往是个参数值，或者说句柄。</p>
+</blockquote>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span> (env<span class="variable">.i_agt</span>[i]) <span class="keyword">begin</span></span><br><span class="line">  top_reset_sqr<span class="variable">.pkt_sqr</span><span class="variable">.push_back</span>(env<span class="variable">.i_agt</span>[i]<span class="variable">.sqr</span>);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>将i_agt的sequencer放入pkt_sqr，需要注意的是这是一个队列。</p>
+<p>再将r_sqr的指针指向r_agt.sqr。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top_reset_sqr<span class="variable">.r_sqr</span> = env<span class="variable">.r_agt</span><span class="variable">.sqr</span>;</span><br></pre></td></tr></table></figure>
+
+<p>在reset_monitor中，有一个使用了断言的detect()</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="keyword">task</span> detect(reset_tr tr);</span><br><span class="line">    <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line">    @(vif<span class="variable">.reset_n</span>);</span><br><span class="line">    <span class="keyword">assert</span>(!<span class="built_in">$isunknown</span>(vif<span class="variable">.reset_n</span>));</span><br><span class="line">    <span class="keyword">if</span> (vif<span class="variable">.reset_n</span> == <span class="number">1&#x27;b0</span>) <span class="keyword">begin</span></span><br><span class="line">      tr<span class="variable">.kind</span> = reset_tr::ASSERT;</span><br><span class="line">      reset_event<span class="variable">.trigger</span>();</span><br><span class="line">        <span class="comment">//触发reset</span></span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">      tr<span class="variable">.kind</span> = reset_tr::DEASSERT;</span><br><span class="line">      reset_event<span class="variable">.reset</span>();</span><br><span class="line">        <span class="comment">//reset关闭</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">endtask</span>: detect</span><br></pre></td></tr></table></figure>
+
+<p>$isunknown()这个函数的作用是，当声明内容中有x或z时 返回1</p>
+<p>__本文作者__：Yuchen <a href="http://example.com/2021/09/07/5/">http://example.com/2021/09/07/5/</a> <br>__版权声明__：转载请注明出处！</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#uvm" >
+    <span class="tag-code">uvm</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2021/09/06/4/">
+        <span class="nav-arrow">← </span>
+        
+          UVM_LAB 4
+        
+      </a>
+    
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo="HaroldFey/HaroldFey.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-text">重置Sequence</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://example.com/2021/09/07/5/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+  <script>
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  </script>
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2021 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+      <br>
+      Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script src="https://utteranc.es/client.js" repo="HaroldFey / HaroldFey.github.io" issue-term="pathname"
+  theme="github-light" crossorigin="anonymous" async>
+  </script>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function () {
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function () {
+    $('figure pre').each(function (i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({ useBR: true });
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+    
+<script src="/js/script.js"></script>
+
+
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      <span id="busuanzi_container_site_pv"><br>
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      </span>
+  </body>
+</html>
