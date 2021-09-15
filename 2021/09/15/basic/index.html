@@ -11,7 +11,7 @@
         
           <title>
             
-              UVM_LAB 5 | Yuchen&#39;s Blog
+              电路部分 | Yuchen&#39;s Blog
                   
           </title>
           <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -147,8 +147,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>UVM_LAB 5</h2>
-  <p class="post-date">2021-09-07</p>
+  <h2>电路部分</h2>
+  <p class="post-date">2021-09-15</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -156,47 +156,87 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><h2><span id="重置sequence">重置Sequence</span></h2><p>首先需要创建一个顶层的reset_sequence来管理下面的reset_sequence 和router_input_port_reset_sequence的执行。</p>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> top_reset_sequence <span class="keyword">extends</span> uvm_sequence;</span><br><span class="line">  <span class="meta">`uvm_object_utils(top_reset_sequence)</span></span><br><span class="line"></span><br><span class="line">  <span class="meta">`uvm_declare_p_sequencer(top_reset_sequencer)</span></span><br><span class="line"></span><br><span class="line">  reset_sequence                    r_seq;</span><br><span class="line">  router_input_port_reset_sequence  i_seq;</span><br></pre></td></tr></table></figure>
+    <section class="markdown-content"><ol>
+<li><p>建立时间与保存时间</p>
+</li>
+<li><p>组合逻辑与时序逻辑</p>
+</li>
+<li><p>动态功耗与静态功耗</p>
+</li>
+<li><p>高电平噪声与低电平噪声</p>
+</li>
+<li><p>用mos管搭建逻辑门</p>
+</li>
+<li><p>流水线技术</p>
+</li>
+</ol>
+<h1><span id="建立时间与保持时间">建立时间与保持时间</span></h1><p><img src="https://images0.cnblogs.com/i/526766/201405/111711122603954.png" alt="img"></p>
+<p>建立时间（Tsu：set up time）　　</p>
+<p>　　是指在触发器的==时钟信号上升沿到来以前，数据稳定不变的时间==，如果建立时间不够，数据将不能在这个时钟上升沿被稳定的打入触发器，Tsu就是指这个最小的稳定时间。</p>
+<p>保持时间（Th：hold time）　　</p>
+<p>　　是指在触发器的==时钟信号上升沿到来以后，数据稳定不变的时间==，如果保持时间不够，数据同样不能被稳定的打入触发器，Th就是指这个最小的保持时间。</p>
+<p>输出相应时间（Tco）　</p>
+<p>　　触发器输出的响应时间，也就是触发器的输出在clk时钟上升沿到来之后多长的时间内发生变化，也即触发器的输出延时。</p>
+<p>以D触发器为例</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/4emdpT"><img src="https://z3.ax1x.com/2021/09/15/4emdpT.png" alt="4emdpT.png" style="zoom:80%;"></a></p>
+<p>其建立时间与保持时间如图</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/4emHAI"><img src="https://z3.ax1x.com/2021/09/15/4emHAI.png" alt="4emHAI.png" style="zoom:80%;"></a></p>
+<p>而一但在建立和保持时间中数据发生变化（C点），会导致整个时钟周期的输出处于亚稳态，介于0-1之间。</p>
+<p>一个例子是串联的两个D触发器和中间的逻辑电路</p>
+<img src="https://images0.cnblogs.com/i/526766/201405/111717378543354.png" alt="img" style="zoom:80%;">
 
-<p>因此使用virtual sequence进行进度管理。</p>
-<p>创建一个q_sequence指针，用来指向top_reset_sequencer中的两个sequence。</p>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fork</span></span><br><span class="line">  <span class="meta">`uvm_do_on(r_seq, p_sequencer.r_sqr);</span></span><br><span class="line">  <span class="keyword">foreach</span> (p_sequencer<span class="variable">.pkt_sqr</span>[i]) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">fork</span></span><br><span class="line">      <span class="keyword">int</span> j = i;</span><br><span class="line">      <span class="keyword">begin</span></span><br><span class="line">        reset_event<span class="variable">.wait_on</span>();</span><br><span class="line">        <span class="meta">`uvm_do_on(i_seq, p_sequencer.pkt_sqr[j]);</span></span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">join_none</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">join</span></span><br></pre></td></tr></table></figure>
+<p><em><strong>*第二个触发器要满足建立时间的约束条件*</strong></em></p>
+<p>时序图如下，假设D1的输入为图中的蓝线所示</p>
+<img src="https://images0.cnblogs.com/i/526766/201405/111723242609983.png" alt="img" style="zoom:80%;">
 
-<p>之后现将r_seq发送给r_sqr，再遍历pkt_sqr，执行i_seq。</p>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">uvm_config_db <span class="variable">#(uvm_object_wrapper)::set(this, &quot;env.r_agt.sqr.reset_phase&quot;, &quot;default_sequence&quot;, null)</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">uvm_config_db <span class="variable">#(uvm_object_wrapper)::set(this, &quot;env.i_agt[*].sqr.reset_phase&quot;, &quot;default_sequence&quot;, null)</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">uvm_config_db <span class="variable">#(uvm_object_wrapper)::set(this, &quot;top_reset_sqr.reset_phase&quot;, &quot;default_sequence&quot;, top_reset_sequence::get_type())</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在第一个时钟上升沿，前边的触发器采集D1信号，将高电平打入触发器，经过Tco的触发器输出延时到达组合逻辑电路。又经过组合逻辑电路的延时Tcomb（我们假定组合逻辑电路此时没有改变信号的高低，可以把它假定为一个缓冲器）送到了D2接口上。在第二个时钟上升沿到来之前，D2数据线上的信号要满足稳定时间&gt;触发器的建立时间Tsu。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Tclk - Tco - Tcomb &gt; Tsu</span><br></pre></td></tr></table></figure>
 
-<p>取消之前的设置，并将top_reset_sqr的reset_phase设为执行top_reset_sequence。</p>
-<p>关于 uvm_config_db #(uvm_object_wrapper)::set</p>
+<p><em><strong>*第二个触发器要满足保持时间的约束条件*</strong></em></p>
+<img src="https://images0.cnblogs.com/i/526766/201405/111737150268286.png" alt="img" style="zoom:80%;">
+
+<p> 接着之前的时序图继续，在第二个时钟上升沿前边触发器采集到D1上的低电平，经过Tco的延时在Q1上得到表达。这个低电平在经过组合电路延时Tcomb到达D2。现在的问题是经过这么Tco+Tcomb的延时，D2上原本的高电平在第二个时钟上升沿到来之后的稳定时间 &gt; 第二个触发器的保持时间。满足了这个条件，后边的触发器才能稳定的接收到最初由D1传过来的高电平。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Tco + Tcomb &gt; Th</span><br></pre></td></tr></table></figure>
+
+<h1><span id="用mos管搭建逻辑门">用mos管搭建逻辑门</span></h1><p>NMOS:高电平截止</p>
+<p>PMOS:高电平导通</p>
+<p><img src="http://mouser.eetrend.com/files/2020-11/wen_zhang_/100059002-113259-11.png" alt="“”"></p>
 <blockquote>
-<p>uvm_config_db#(int)::set(this, “env.i_agt.drv”, “pre_num”, 100);</p>
-<p>四个参数，set寄信，get收信。</p>
-<p>第一个和第二个参数联合起来组成目标路径，与此路径符合的目标才能收信。第一个参数必须是一个uvm_component实例的指针，第二个参数是相对此实例的路径。第三个参数表示一个记号，用以说明这个值是传给目标中的哪个成员的，第四个参数是要设置的值。</p>
-<p>uvm_config_db#(int)::get(this, “”, “pre_num”, pre_num);</p>
-<p>四个参数中，第一个参数，通常可以为 “this”, “null”等实例的指针。</p>
-<p>第二个参数，可以为空“”， 也可以用通配符，如截图中的例子，”*yy_agent” “yy_agent.drv”</p>
-<p>set 与get的第一个到第三个参数“寄信”与“收信”要符合两个条件：时间的匹配，一定是先寄信再收信，为了避免出错，一般get前最好加判断，2 标记一致，也就是邮件目的地是匹配的。</p>
-<p>第三个，往往是个参数值，或者说句柄。</p>
+<p>用1个NMOS和1个PMOS搭建的非门；当A为高电平时，T1截止，T2导通，Y为低电平；当A为低电平时，T1导通，T2截止，Y为高电平。</p>
 </blockquote>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span> (env<span class="variable">.i_agt</span>[i]) <span class="keyword">begin</span></span><br><span class="line">  top_reset_sqr<span class="variable">.pkt_sqr</span><span class="variable">.push_back</span>(env<span class="variable">.i_agt</span>[i]<span class="variable">.sqr</span>);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://mouser.eetrend.com/files/2020-11/wen_zhang_/100059002-113259-11.png" alt="“”"></p>
+<blockquote>
+<p>② MOS管与非门</p>
+<p>备注：T3和T4为NMOS，T5和T6为PMOS；</p>
+<p>A=0，B=0时，T5和T6导通，T3和T4截止，Y=1</p>
+<p>A=1，B=0时，T3和T6截止，T4和T5导通，Y=1</p>
+<p>A=0，B=1时，T3和T6导通，T4和T5截止，Y=1</p>
+<p>A=1，B=1时，T5和T6截止，T3和T4导通，Y=0</p>
+</blockquote>
+<h1><span id="动态功耗与静态功耗">动态功耗与静态功耗</span></h1><p>动态功耗主要有开关功耗和短路功耗；其中开关功耗在动态功耗中占大部分比例；从上面的两个式子中我们可以看到，动态功耗主要跟电源的供电电压、翻转率、负载电容有关。</p>
+<p>在CMOS电路中，静态功耗主要是漏电流引起的功耗，如下图所示：</p>
+<img src="https://images2015.cnblogs.com/blog/1110317/201705/1110317-20170523130648132-563339299.png" alt="img" style="zoom:80%;">
 
-<p>将i_agt的sequencer放入pkt_sqr，需要注意的是这是一个队列。</p>
-<p>再将r_sqr的指针指向r_agt.sqr。</p>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top_reset_sqr<span class="variable">.r_sqr</span> = env<span class="variable">.r_agt</span><span class="variable">.sqr</span>;</span><br></pre></td></tr></table></figure>
-
-<p>在reset_monitor中，有一个使用了断言的detect()</p>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="keyword">task</span> detect(reset_tr tr);</span><br><span class="line">    <span class="meta">`uvm_info(&quot;TRACE&quot;, $sformatf(&quot;%m&quot;), UVM_HIGH);</span></span><br><span class="line">    @(vif<span class="variable">.reset_n</span>);</span><br><span class="line">    <span class="keyword">assert</span>(!<span class="built_in">$isunknown</span>(vif<span class="variable">.reset_n</span>));</span><br><span class="line">    <span class="keyword">if</span> (vif<span class="variable">.reset_n</span> == <span class="number">1&#x27;b0</span>) <span class="keyword">begin</span></span><br><span class="line">      tr<span class="variable">.kind</span> = reset_tr::ASSERT;</span><br><span class="line">      reset_event<span class="variable">.trigger</span>();</span><br><span class="line">        <span class="comment">//触发reset</span></span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">      tr<span class="variable">.kind</span> = reset_tr::DEASSERT;</span><br><span class="line">      reset_event<span class="variable">.reset</span>();</span><br><span class="line">        <span class="comment">//reset关闭</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">endtask</span>: detect</span><br></pre></td></tr></table></figure>
-
-<p>$isunknown()这个函数的作用是，当声明内容中有x或z时 返回1</p>
-<p>__本文作者__：Yuchen <a href="http://example.com/2021/09/07/5/">http://example.com/2021/09/07/5/</a> <br>__版权声明__：转载请注明出处！</p>
+<p>漏电流有下面几个部分组成：</p>
+<p>　　·PN结反向电流I1（PN-junction Reverse Current）</p>
+<p>　　·源极和漏极之间的亚阈值漏电流I2（Sub-threshold Current）</p>
+<p>　　·栅极漏电流，包括栅极和漏极之间的感应漏电流I3（Gate Induced Drain Leakage）</p>
+<p>　　·栅极和衬底之间的隧道漏电流I4（Gate Tunneling）</p>
+<h1><span id="组合逻辑与时序逻辑">组合逻辑与时序逻辑</span></h1><p>1、简单说，组合逻辑只跟当前的状态有关系，例如一根导线 + 逻辑门的组合，输出取决于当前时刻的输入，考虑门延时的话另说。</p>
+<p>2、时序逻辑的状态跟之前状态、边沿信号有关，边沿信号没来之前，输出保持之前的输入；边沿信号来时，输出状态跟随输入信号变化。</p>
+<h1><span id="电平噪声">电平噪声</span></h1><p>当一个信号上叠加了噪声后，其电平会发生变化，但是叠加多少噪声后其逻辑值会发生变化呢？<strong>逻辑值不发生变化时，电路所能够容忍的最大噪声值就是噪声容限</strong>。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/4e8sBT"><img src="https://z3.ax1x.com/2021/09/16/4e8sBT.png" alt="4e8sBT.png"></a></p>
+<h1><span id="流水线">流水线</span></h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/rill_zhen/article/details/8038697">https://blog.csdn.net/rill_zhen/article/details/8038697</a></p>
+<p>核心是用面积换速度。</p>
+<p>__本文作者__：Yuchen <a href="http://example.com/2021/09/15/basic/">http://example.com/2021/09/15/basic/</a> <br>__版权声明__：转载请注明出处！</p>
 </section>
     <!-- Tags START -->
     
       <div class="tags">
         <span>Tags:</span>
         
-  <a href="/tags#uvm" >
-    <span class="tag-code">uvm</span>
+  <a href="/tags#ic" >
+    <span class="tag-code">ic</span>
   </a>
 
       </div>
@@ -207,20 +247,13 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2021/09/06/4/">
+      <a class="nav-left" href="/2021/09/07/5/">
         <span class="nav-arrow">← </span>
         
-          UVM_LAB 4
+          UVM_LAB 5
         
       </a>
     
-    
-      <a class="nav-right" href="/2021/09/15/basic/">
-        
-          电路部分
-        
-        <span class="nav-arrow"> →</span>
-      </a>
     
   </div>
 
@@ -255,7 +288,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-text">重置Sequence</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-text">建立时间与保持时间</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-text">用mos管搭建逻辑门</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-text">动态功耗与静态功耗</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-text">组合逻辑与时序逻辑</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-text">电平噪声</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-text">流水线</span></a></li></ol>
     
   </div>
 </aside>
@@ -265,7 +298,7 @@
 
 <script>
   (function () {
-    var url = 'http://example.com/2021/09/07/5/';
+    var url = 'http://example.com/2021/09/15/basic/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({

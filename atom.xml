@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-09-07T14:02:41.588Z</updated>
+  <updated>2021-09-15T16:10:53.771Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>电路部分</title>
+    <link href="http://example.com/2021/09/15/basic/"/>
+    <id>http://example.com/2021/09/15/basic/</id>
+    <published>2021-09-15T13:26:42.000Z</published>
+    <updated>2021-09-15T16:10:53.771Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li><p>建立时间与保存时间</p></li><li><p>组合逻辑与时序逻辑</p></li><li><p>动态功耗与静态功耗</p></li><li><p>高电平噪声与低电平噪声</p></li><li><p>用mos管搭建逻辑门</p></li><li><p>流水线技术</p></li></ol><h1><span id="建立时间与保持时间">建立时间与保持时间</span></h1><p><img src="https://images0.cnblogs.com/i/526766/201405/111711122603954.png" alt="img"></p><p>建立时间（Tsu：set up time）　　</p><p>　　是指在触发器的==时钟信号上升沿到来以前，数据稳定不变的时间==，如果建立时间不够，数据将不能在这个时钟上升沿被稳定的打入触发器，Tsu就是指这个最小的稳定时间。</p><p>保持时间（Th：hold time）　　</p><p>　　是指在触发器的==时钟信号上升沿到来以后，数据稳定不变的时间==，如果保持时间不够，数据同样不能被稳定的打入触发器，Th就是指这个最小的保持时间。</p><p>输出相应时间（Tco）　</p><p>　　触发器输出的响应时间，也就是触发器的输出在clk时钟上升沿到来之后多长的时间内发生变化，也即触发器的输出延时。</p><p>以D触发器为例</p><p><a href="https://imgtu.com/i/4emdpT"><img src="https://z3.ax1x.com/2021/09/15/4emdpT.png" alt="4emdpT.png" style="zoom:80%;"></a></p><p>其建立时间与保持时间如图</p><p><a href="https://imgtu.com/i/4emHAI"><img src="https://z3.ax1x.com/2021/09/15/4emHAI.png" alt="4emHAI.png" style="zoom:80%;"></a></p><p>而一但在建立和保持时间中数据发生变化（C点），会导致整个时钟周期的输出处于亚稳态，介于0-1之间。</p><p>一个例子是串联的两个D触发器和中间的逻辑电路</p><img src="https://images0.cnblogs.com/i/526766/201405/111717378543354.png" alt="img" style="zoom:80%;"><p><em><strong>*第二个触发器要满足建立时间的约束条件*</strong></em></p><p>时序图如下，假设D1的输入为图中的蓝线所示</p><img src="https://images0.cnblogs.com/i/526766/201405/111723242609983.png" alt="img" style="zoom:80%;"><p>在第一个时钟上升沿，前边的触发器采集D1信号，将高电平打入触发器，经过Tco的触发器输出延时到达组合逻辑电路。又经过组合逻辑电路的延时Tcomb（我们假定组合逻辑电路此时没有改变信号的高低，可以把它假定为一个缓冲器）送到了D2接口上。在第二个时钟上升沿到来之前，D2数据线上的信号要满足稳定时间&gt;触发器的建立时间Tsu。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Tclk - Tco - Tcomb &gt; Tsu</span><br></pre></td></tr></table></figure><p><em><strong>*第二个触发器要满足保持时间的约束条件*</strong></em></p><img src="https://images0.cnblogs.com/i/526766/201405/111737150268286.png" alt="img" style="zoom:80%;"><p> 接着之前的时序图继续，在第二个时钟上升沿前边触发器采集到D1上的低电平，经过Tco的延时在Q1上得到表达。这个低电平在经过组合电路延时Tcomb到达D2。现在的问题是经过这么Tco+Tcomb的延时，D2上原本的高电平在第二个时钟上升沿到来之后的稳定时间 &gt; 第二个触发器的保持时间。满足了这个条件，后边的触发器才能稳定的接收到最初由D1传过来的高电平。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Tco + Tcomb &gt; Th</span><br></pre></td></tr></table></figure><h1><span id="用mos管搭建逻辑门">用mos管搭建逻辑门</span></h1><p>NMOS:高电平截止</p><p>PMOS:高电平导通</p><p><img src="http://mouser.eetrend.com/files/2020-11/wen_zhang_/100059002-113259-11.png" alt="“”"></p><blockquote><p>用1个NMOS和1个PMOS搭建的非门；当A为高电平时，T1截止，T2导通，Y为低电平；当A为低电平时，T1导通，T2截止，Y为高电平。</p></blockquote><p><img src="http://mouser.eetrend.com/files/2020-11/wen_zhang_/100059002-113259-11.png" alt="“”"></p><blockquote><p>② MOS管与非门</p><p>备注：T3和T4为NMOS，T5和T6为PMOS；</p><p>A=0，B=0时，T5和T6导通，T3和T4截止，Y=1</p><p>A=1，B=0时，T3和T6截止，T4和T5导通，Y=1</p><p>A=0，B=1时，T3和T6导通，T4和T5截止，Y=1</p><p>A=1，B=1时，T5和T6截止，T3和T4导通，Y=0</p></blockquote><h1><span id="动态功耗与静态功耗">动态功耗与静态功耗</span></h1><p>动态功耗主要有开关功耗和短路功耗；其中开关功耗在动态功耗中占大部分比例；从上面的两个式子中我们可以看到，动态功耗主要跟电源的供电电压、翻转率、负载电容有关。</p><p>在CMOS电路中，静态功耗主要是漏电流引起的功耗，如下图所示：</p><img src="https://images2015.cnblogs.com/blog/1110317/201705/1110317-20170523130648132-563339299.png" alt="img" style="zoom:80%;"><p>漏电流有下面几个部分组成：</p><p>　　·PN结反向电流I1（PN-junction Reverse Current）</p><p>　　·源极和漏极之间的亚阈值漏电流I2（Sub-threshold Current）</p><p>　　·栅极漏电流，包括栅极和漏极之间的感应漏电流I3（Gate Induced Drain Leakage）</p><p>　　·栅极和衬底之间的隧道漏电流I4（Gate Tunneling）</p><h1><span id="组合逻辑与时序逻辑">组合逻辑与时序逻辑</span></h1><p>1、简单说，组合逻辑只跟当前的状态有关系，例如一根导线 + 逻辑门的组合，输出取决于当前时刻的输入，考虑门延时的话另说。</p><p>2、时序逻辑的状态跟之前状态、边沿信号有关，边沿信号没来之前，输出保持之前的输入；边沿信号来时，输出状态跟随输入信号变化。</p><h1><span id="电平噪声">电平噪声</span></h1><p>当一个信号上叠加了噪声后，其电平会发生变化，但是叠加多少噪声后其逻辑值会发生变化呢？<strong>逻辑值不发生变化时，电路所能够容忍的最大噪声值就是噪声容限</strong>。</p><p><a href="https://imgtu.com/i/4e8sBT"><img src="https://z3.ax1x.com/2021/09/16/4e8sBT.png" alt="4e8sBT.png"></a></p><h1><span id="流水线">流水线</span></h1><p><a href="https://blog.csdn.net/rill_zhen/article/details/8038697">https://blog.csdn.net/rill_zhen/article/details/8038697</a></p><p>核心是用面积换速度。</p><p>__本文作者__：Yuchen <a href="http://example.com/2021/09/15/basic/">http://example.com/2021/09/15/basic/</a> <br>__版权声明__：转载请注明出处！</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;建立时间与保存时间&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;组合逻辑与时序逻辑&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;动态功耗与静态功耗&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;高电平噪声与低电平噪声&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;用mos管搭建逻辑门&lt;/p&gt;
+&lt;/l</summary>
+      
+    
+    
+    
+    
+    <category term="ic" scheme="http://example.com/tags/ic/"/>
+    
+  </entry>
   
   <entry>
     <title>UVM_LAB 5</title>
