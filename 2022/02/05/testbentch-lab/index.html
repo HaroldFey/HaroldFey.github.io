@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta name="google-site-verification" content="oKPi6gPtg3EkGAMl-OwnmMFR-e-Rv1C72DKQiDimfR4" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="水是有毒的">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+      <link rel="shortcut icon" href="/css/images/logo.png">
+        
+          <title>
+            
+              testbentch_lab | Yuchen&#39;s Blog
+                  
+          </title>
+          <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+          <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+          <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css"
+            rel="stylesheet">
+          
+<link rel="stylesheet" href="/css/style.css">
+
+            
+                  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+                  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+                  
+                    
+<script src="/js/qrious.js"></script>
+
+                      
+                        
+                              
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+                                
+                                  
+    
+<script src="/js/local-search.js"></script>
+
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Yuchen's Blog" type="application/atom+xml">
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Yuchen's Blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>testbentch_lab</h2>
+  <p class="post-date">2022-02-05</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>重新用questasim跑了一下普通版的tb，理一下思路</p>
+<p>包括下面这些文件</p>
+<h2><span id="文件列表">文件列表</span></h2><p>│  Packet.sv</p>
+<p>│  Driver.sv│  DriverBase.sv</p>
+<p>│  Receiver.sv│  ReceiverBase.sv</p>
+<p>│  Generator.sv</p>
+<p>│  Scoreboard.sv</p>
+<p>│  router.v│  router_io.sv│  router_test_top.sv</p>
+<p>│  test.sv</p>
+<h2><span id="packet">Packet</span></h2><p>packet是最底层的一个类，它定义了所有传输的数据包类型，在后面的所有文件中均调用该类</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Packet;</span><br><span class="line">  <span class="keyword">rand</span> <span class="keyword">bit</span>[<span class="number">3</span>:<span class="number">0</span>] sa, da;		<span class="comment">// random port selection</span></span><br><span class="line">  <span class="keyword">rand</span> <span class="keyword">reg</span>[<span class="number">7</span>:<span class="number">0</span>] payload[$];	<span class="comment">// random data array</span></span><br><span class="line">       <span class="keyword">string</span>   name;		<span class="comment">// unique identifier</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">constraint</span> Limit &#123;</span><br><span class="line">    sa <span class="keyword">inside</span> &#123;[<span class="number">0</span>:<span class="number">15</span>]&#125;;</span><br><span class="line">    da <span class="keyword">inside</span> &#123;[<span class="number">0</span>:<span class="number">15</span>]&#125;;</span><br><span class="line">    payload<span class="variable">.size</span>() <span class="keyword">inside</span> &#123;[<span class="number">2</span>:<span class="number">4</span>]&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">extern</span> <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name = <span class="string">&quot;Packet&quot;</span>);</span><br><span class="line">  <span class="keyword">extern</span> <span class="keyword">function</span> <span class="keyword">bit</span> compare(Packet pkt2cmp, <span class="keyword">ref</span> <span class="keyword">string</span> message);</span><br><span class="line">  <span class="keyword">extern</span> <span class="keyword">function</span> <span class="keyword">void</span> display(<span class="keyword">string</span> prefix = <span class="string">&quot;NOTE&quot;</span>);</span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>可以看到随机化了输入端口、输出端口、以及数据队列。</p>
+<p>包含三个函数，新建、比较以及显示。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="keyword">bit</span> Packet::compare(Packet pkt2cmp, <span class="keyword">ref</span> <span class="keyword">string</span> message);</span><br><span class="line">  <span class="keyword">if</span> (payload<span class="variable">.size</span>() != pkt2cmp<span class="variable">.payload</span><span class="variable">.size</span>()) <span class="keyword">begin</span></span><br><span class="line">    message = <span class="string">&quot;Payload Size Mismatch:\n&quot;</span>;</span><br><span class="line">    message = &#123; message, <span class="built_in">$psprintf</span>(<span class="string">&quot;payload.size() = %0d, pkt2cmp.payload.size() = %0d\n&quot;</span>, payload<span class="variable">.size</span>(), pkt2cmp<span class="variable">.payload</span><span class="variable">.size</span>()) &#125;;</span><br><span class="line">    <span class="keyword">return</span>(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">foreach</span>(payload[i]) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> (payload[i] == pkt2cmp<span class="variable">.payload</span>[i]) ;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">      message = <span class="string">&quot;Payload Content Mismatch:\n&quot;</span>;</span><br><span class="line">      <span class="keyword">foreach</span>(payload[i])</span><br><span class="line">        message = &#123; message, <span class="built_in">$psprintf</span>(<span class="string">&quot;payload[%0d] = %0d,\tpkt2cmp.payload[%0d] = %0d\n&quot;</span>, i, payload[i], i, pkt2cmp<span class="variable">.payload</span>[i]) &#125;;</span><br><span class="line">      <span class="keyword">return</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  message = <span class="string">&quot;Successfully Compared&quot;</span>;</span><br><span class="line">  <span class="keyword">return</span>(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">endfunction</span></span><br></pre></td></tr></table></figure>
+
+<p>比较函数会比较输送队列的长度和值，不匹配会显示出问题。</p>
+<h2><span id="driverbase">DriverBase</span></h2><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> DriverBase;</span><br><span class="line">  <span class="keyword">virtual</span> router_io<span class="variable">.TB</span> router;	<span class="comment">// interface signal</span></span><br><span class="line">  <span class="keyword">string</span>    name;		<span class="comment">// unique identifier</span></span><br><span class="line">  <span class="keyword">bit</span>[<span class="number">3</span>:<span class="number">0</span>]  sa, da;		<span class="comment">// source and destination addresses</span></span><br><span class="line">  <span class="keyword">reg</span>[<span class="number">7</span>:<span class="number">0</span>]  payload[$];		<span class="comment">// Packet payload</span></span><br><span class="line">  Packet    pkt2send;		<span class="comment">// stimulus Packet object</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">extern</span> <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name = <span class="string">&quot;DriverBase&quot;</span>, <span class="keyword">virtual</span> router_io<span class="variable">.TB</span> router);</span><br><span class="line">  <span class="keyword">extern</span> <span class="keyword">virtual</span> <span class="keyword">task</span> send();</span><br><span class="line">  <span class="keyword">extern</span> <span class="keyword">virtual</span> <span class="keyword">task</span> send_addrs();</span><br><span class="line">  <span class="keyword">extern</span> <span class="keyword">virtual</span> <span class="keyword">task</span> send_pad();</span><br><span class="line">  <span class="keyword">extern</span> <span class="keyword">virtual</span> <span class="keyword">task</span> send_payload();</span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+
+<p>driverbase是driver的父类，定义了发送任务，与时序图相对应有是三个阶段，包括传送地址、打拍以及传送数据。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> DriverBase::send_addrs();</span><br><span class="line">  <span class="keyword">if</span> (TRACE_ON) <span class="built_in">$display</span>(<span class="string">&quot;[TRACE]%t %s:%m&quot;</span>, <span class="built_in">$realtime</span>, name);</span><br><span class="line">  router<span class="variable">.cb</span><span class="variable">.frame_n</span>[sa] &lt;= <span class="number">1&#x27;b0</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">4</span>; i++) <span class="keyword">begin</span></span><br><span class="line">    router<span class="variable">.cb</span><span class="variable">.din</span>[sa] &lt;= da[i];</span><br><span class="line">    @(router<span class="variable">.cb</span>);</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endtask</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> DriverBase::send_pad();</span><br><span class="line">  <span class="keyword">if</span> (TRACE_ON) <span class="built_in">$display</span>(<span class="string">&quot;[TRACE]%t %s:%m&quot;</span>, <span class="built_in">$realtime</span>, name);</span><br><span class="line">  router<span class="variable">.cb</span><span class="variable">.din</span>[sa] &lt;= <span class="number">1&#x27;b1</span>;</span><br><span class="line">  router<span class="variable">.cb</span><span class="variable">.valid_n</span>[sa] &lt;= <span class="number">1&#x27;b1</span>;</span><br><span class="line">  <span class="keyword">repeat</span>(<span class="number">5</span>) @(router<span class="variable">.cb</span>);</span><br><span class="line"><span class="keyword">endtask</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">task</span> DriverBase::send_payload();</span><br><span class="line">  <span class="keyword">if</span> (TRACE_ON) <span class="built_in">$display</span>(<span class="string">&quot;[TRACE]%t %s:%m&quot;</span>, <span class="built_in">$realtime</span>, name);</span><br><span class="line">  <span class="keyword">foreach</span>(payload[index]) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">8</span>; i++) <span class="keyword">begin</span></span><br><span class="line">      router<span class="variable">.cb</span><span class="variable">.din</span>[sa] &lt;= payload[index][i];</span><br><span class="line">      router<span class="variable">.cb</span><span class="variable">.valid_n</span>[sa] &lt;= <span class="number">1&#x27;b0</span>;</span><br><span class="line">      router<span class="variable">.cb</span><span class="variable">.frame_n</span>[sa] &lt;= ((index == (payload<span class="variable">.size</span>() - <span class="number">1</span>)) &amp;&amp; (i == <span class="number">7</span>));</span><br><span class="line">      @(router<span class="variable">.cb</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  router<span class="variable">.cb</span><span class="variable">.valid_n</span>[sa] &lt;= <span class="number">1&#x27;b1</span>;</span><br><span class="line"><span class="keyword">endtask</span></span><br></pre></td></tr></table></figure>
+
+<h2><span id="driver">Driver</span></h2><p>driver类在继承了driverbase的发送功能后，增加了旗语和信箱，用来管理进程。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Driver <span class="keyword">extends</span> DriverBase;</span><br><span class="line">  mailbox in_box;	<span class="comment">// Generator mailbox</span></span><br><span class="line">  mailbox out_box;	<span class="comment">// Scoreboard mailbox</span></span><br><span class="line">  semaphore sem[];	<span class="comment">// output port arbitration</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">extern</span> <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name = <span class="string">&quot;Driver&quot;</span>, <span class="keyword">int</span> port_id, semaphore sem[], mailbox in_box, out_box, <span class="keyword">virtual</span> router_io<span class="variable">.TB</span> router);</span><br><span class="line">  <span class="keyword">extern</span> <span class="keyword">virtual</span> <span class="keyword">task</span> start();</span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+
+<p>in_box用来存放从Generator里生成的数据，而out_box则用来将数据发送给scoreboard。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> Driver::start();</span><br><span class="line">  <span class="keyword">if</span> (TRACE_ON) <span class="built_in">$display</span>(<span class="string">&quot;[TRACE]%t %s:%m&quot;</span>, <span class="built_in">$realtime</span>, name);</span><br><span class="line">  <span class="keyword">fork</span></span><br><span class="line">    <span class="keyword">forever</span> <span class="keyword">begin</span></span><br><span class="line">      in_box<span class="variable">.get</span>(pkt2send);</span><br><span class="line">        <span class="keyword">if</span> (pkt2send<span class="variable">.sa</span> != <span class="keyword">this</span><span class="variable">.sa</span>) <span class="keyword">continue</span>;<span class="comment">//检查源地址是否正确</span></span><br><span class="line">      <span class="keyword">this</span><span class="variable">.da</span> = pkt2send<span class="variable">.da</span>;</span><br><span class="line">      <span class="keyword">this</span><span class="variable">.payload</span> = pkt2send<span class="variable">.payload</span>;</span><br><span class="line">        sem[<span class="keyword">this</span><span class="variable">.da</span>]<span class="variable">.get</span>(<span class="number">1</span>);<span class="comment">//旗语控制一个接收地址同时只有一个在发送</span></span><br><span class="line">      send();</span><br><span class="line">      out_box<span class="variable">.put</span>(pkt2send);</span><br><span class="line">      sem[<span class="keyword">this</span><span class="variable">.da</span>]<span class="variable">.put</span>(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">join_none</span></span><br><span class="line"><span class="keyword">endtask</span></span><br></pre></td></tr></table></figure>
+
+<h2><span id="receiverbase">ReceiverBase</span></h2><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> ReceiverBase;</span><br><span class="line">  <span class="keyword">virtual</span> router_io<span class="variable">.TB</span> router;	<span class="comment">// interface signals</span></span><br><span class="line">  <span class="keyword">string</span>   name;		<span class="comment">// unique identifier</span></span><br><span class="line">  <span class="keyword">bit</span>[<span class="number">3</span>:<span class="number">0</span>] da;			<span class="comment">// output port to monitor</span></span><br><span class="line">  <span class="keyword">reg</span>[<span class="number">7</span>:<span class="number">0</span>] pkt2cmp_payload[$];	<span class="comment">// actual payload array</span></span><br><span class="line">  Packet   pkt2cmp;		<span class="comment">// actual Packet object</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">extern</span> <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name = <span class="string">&quot;ReceiverBase&quot;</span>, <span class="keyword">virtual</span> router_io<span class="variable">.TB</span> router);</span><br><span class="line">  <span class="keyword">extern</span> <span class="keyword">virtual</span> <span class="keyword">task</span> recv();</span><br><span class="line">  <span class="keyword">extern</span> <span class="keyword">virtual</span> <span class="keyword">task</span> get_payload();</span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+
+<p>包括两个任务，接收以及获取数值</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> ReceiverBase::recv();</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">int</span> pkt_cnt = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> (TRACE_ON) <span class="built_in">$display</span>(<span class="string">&quot;[TRACE]%t %s:%m&quot;</span>, <span class="built_in">$realtime</span>, name);</span><br><span class="line">  get_payload();</span><br><span class="line">  pkt2cmp<span class="variable">.da</span> = da;</span><br><span class="line">  pkt2cmp<span class="variable">.payload</span> = pkt2cmp_payload;<span class="comment">//将传输队列的值赋值给实际的包</span></span><br><span class="line">  pkt2cmp<span class="variable">.name</span> = <span class="built_in">$psprintf</span>(<span class="string">&quot;rcvdPkt[%0d]&quot;</span>, pkt_cnt++);</span><br><span class="line"><span class="keyword">endtask</span></span><br></pre></td></tr></table></figure>
+
+<p>任务get_payload()</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> ReceiverBase::get_payload();</span><br><span class="line">  <span class="keyword">if</span> (TRACE_ON) <span class="built_in">$display</span>(<span class="string">&quot;[TRACE]%t %s:%m&quot;</span>, <span class="built_in">$realtime</span>, name);</span><br><span class="line">  pkt2cmp_payload<span class="variable">.delete</span>();</span><br><span class="line">  <span class="keyword">fork</span>: frameo_wd_timer</span><br><span class="line">      @(<span class="keyword">negedge</span> router<span class="variable">.cb</span><span class="variable">.frameo_n</span>[da]);<span class="comment">//一旦有下降沿，说明程序可以正常工作，跳出wd</span></span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">      <span class="keyword">repeat</span>(<span class="number">1000</span>) @(router<span class="variable">.cb</span>);</span><br><span class="line">      <span class="built_in">$display</span>(<span class="string">&quot;\n%m\n[ERROR]%t Frame signal timed out!\n&quot;</span>, <span class="built_in">$realtime</span>);</span><br><span class="line">      <span class="built_in">$finish</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">join_any</span>: frameo_wd_timer</span><br><span class="line">  <span class="keyword">disable</span> <span class="keyword">fork</span>;</span><br><span class="line">  <span class="keyword">forever</span> <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">reg</span>[<span class="number">7</span>:<span class="number">0</span>] datum;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">8</span>; ) <span class="keyword">begin</span></span><br><span class="line">      <span class="keyword">if</span> (!router<span class="variable">.cb</span><span class="variable">.valido_n</span>[da])</span><br><span class="line">        datum[i++] = router<span class="variable">.cb</span><span class="variable">.dout</span>[da];</span><br><span class="line">      <span class="keyword">if</span> (router<span class="variable">.cb</span><span class="variable">.frameo_n</span>[da])</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">8</span>) <span class="keyword">begin</span></span><br><span class="line">          pkt2cmp_payload<span class="variable">.push_back</span>(datum);</span><br><span class="line">          <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">          <span class="built_in">$display</span>(<span class="string">&quot;\n%m\n[ERROR]%t Packet payload not byte aligned!\n&quot;</span>, <span class="built_in">$realtime</span>);</span><br><span class="line">          <span class="built_in">$finish</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">      @(router<span class="variable">.cb</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    pkt2cmp_payload<span class="variable">.push_back</span>(datum);</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endtask</span></span><br></pre></td></tr></table></figure>
+
+<h2><span id="receiver">Receiver</span></h2><p>receiver在receiverbase的基础上加了一个放进信箱的过程</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> Receiver::start();</span><br><span class="line">  <span class="keyword">if</span> (TRACE_ON) <span class="built_in">$display</span>(<span class="string">&quot;[TRACE]%t %s:%m&quot;</span>, <span class="built_in">$realtime</span>, name);</span><br><span class="line">  <span class="keyword">fork</span></span><br><span class="line">    <span class="keyword">forever</span> <span class="keyword">begin</span></span><br><span class="line">      recv();</span><br><span class="line">      <span class="keyword">begin</span></span><br><span class="line">        Packet pkt = <span class="keyword">new</span> pkt2cmp;</span><br><span class="line">          out_box<span class="variable">.put</span>(pkt);<span class="comment">//将pkt2cmp放进了scoreboard的信箱里</span></span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">join_none</span></span><br><span class="line"><span class="keyword">endtask</span></span><br></pre></td></tr></table></figure>
+
+<h2><span id="generator">Generator</span></h2><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Generator;</span><br><span class="line">  <span class="keyword">string</span>  name;		<span class="comment">// unique identifier</span></span><br><span class="line">  Packet  pkt2send;	<span class="comment">// stimulus Packet object</span></span><br><span class="line">  mailbox out_box[];	<span class="comment">// mailbox to Drivers</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">extern</span> <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name = <span class="string">&quot;Generator&quot;</span>);</span><br><span class="line">  <span class="keyword">extern</span> <span class="keyword">virtual</span> <span class="keyword">task</span> gen();</span><br><span class="line">  <span class="keyword">extern</span> <span class="keyword">virtual</span> <span class="keyword">task</span> start();</span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+
+<p>其中，generator会生成提供给driver的out_box</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Generator::<span class="keyword">new</span>(<span class="keyword">string</span> name);</span><br><span class="line">  <span class="keyword">if</span> (TRACE_ON) <span class="built_in">$display</span>(<span class="string">&quot;[TRACE]%t %s:%m&quot;</span>, <span class="built_in">$realtime</span>, name);</span><br><span class="line">  <span class="keyword">this</span><span class="variable">.name</span> = name;</span><br><span class="line">  <span class="keyword">this</span><span class="variable">.pkt2send</span> = <span class="keyword">new</span>();</span><br><span class="line">  <span class="keyword">this</span><span class="variable">.out_box</span> = <span class="keyword">new</span>[<span class="number">16</span>];</span><br><span class="line">  <span class="keyword">foreach</span>(<span class="keyword">this</span><span class="variable">.out_box</span>[i])</span><br><span class="line">    <span class="keyword">this</span><span class="variable">.out_box</span>[i] = <span class="keyword">new</span>();</span><br><span class="line"><span class="keyword">endfunction</span></span><br></pre></td></tr></table></figure>
+
+<h2><span id="scoreboard">Scoreboard</span></h2><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Scoreboard;</span><br><span class="line">  <span class="keyword">string</span>   name;		<span class="comment">// unique identifier</span></span><br><span class="line">  <span class="keyword">event</span>    DONE;		<span class="comment">// flag to indicate goal reached</span></span><br><span class="line">  Packet   refPkt[$];		<span class="comment">// reference Packet array</span></span><br><span class="line">  Packet   pkt2send;		<span class="comment">// Packet object from Drivers</span></span><br><span class="line">  Packet   pkt2cmp;		<span class="comment">// Packet object from Receivers</span></span><br><span class="line">  mailbox  driver_mbox;		<span class="comment">// mailbox for Packet objects from Drivers</span></span><br><span class="line">  mailbox  receiver_mbox;	<span class="comment">// mailbox fro Packet objects from Receivers</span></span><br><span class="line">  <span class="keyword">bit</span>[<span class="number">3</span>:<span class="number">0</span>] sa, da;		<span class="comment">// functional coverage properties</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">covergroup</span> router_cov;</span><br><span class="line">    <span class="keyword">coverpoint</span> sa;</span><br><span class="line">    <span class="keyword">coverpoint</span> da;       <span class="comment">//检查原地址和目标地址</span></span><br><span class="line">    <span class="keyword">cross</span> sa, da;</span><br><span class="line">  <span class="keyword">endgroup</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">extern</span> <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name = <span class="string">&quot;Scoreboard&quot;</span>, mailbox driver_mbox = <span class="literal">null</span>, receiver_mbox = <span class="literal">null</span>);</span><br><span class="line">  <span class="keyword">extern</span> <span class="keyword">virtual</span> <span class="keyword">task</span> start();</span><br><span class="line">  <span class="keyword">extern</span> <span class="keyword">virtual</span> <span class="keyword">task</span> check();</span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> Scoreboard::check();</span><br><span class="line">  <span class="keyword">int</span>    index[$];</span><br><span class="line">  <span class="keyword">string</span> message;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">int</span>  pkts_checked = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">real</span>   coverage_result;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (TRACE_ON) <span class="built_in">$display</span>(<span class="string">&quot;[TRACE]%0t %s:%m&quot;</span>, <span class="built_in">$time</span>, name);</span><br><span class="line">  index = refPkt<span class="variable">.find_first_index</span>() <span class="keyword">with</span> (item<span class="variable">.da</span> == pkt2cmp<span class="variable">.da</span>);</span><br><span class="line">  <span class="keyword">if</span> (index<span class="variable">.size</span>() &lt;= <span class="number">0</span>) <span class="keyword">begin</span></span><br><span class="line">    <span class="built_in">$display</span>(<span class="string">&quot;\n%m\n[ERROR]%0t %s not found in Reference Queue\n&quot;</span>, <span class="built_in">$time</span>, pkt2cmp<span class="variable">.name</span>);</span><br><span class="line">    pkt2cmp<span class="variable">.display</span>(<span class="string">&quot;ERROR&quot;</span>);</span><br><span class="line">    <span class="built_in">$finish</span>;</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  pkt2send = refPkt[index[<span class="number">0</span>]];</span><br><span class="line">  refPkt<span class="variable">.delete</span>(index[<span class="number">0</span>]);</span><br><span class="line">  <span class="keyword">if</span> (!pkt2send<span class="variable">.compare</span>(pkt2cmp, message)) <span class="keyword">begin</span></span><br><span class="line">    <span class="built_in">$display</span>(<span class="string">&quot;\n%m\n[ERROR]%0t Packet #%0d %s\n&quot;</span>, <span class="built_in">$time</span>, pkts_checked, message);</span><br><span class="line">    pkt2send<span class="variable">.display</span>(<span class="string">&quot;ERROR&quot;</span>);</span><br><span class="line">    pkt2cmp<span class="variable">.display</span>(<span class="string">&quot;ERROR&quot;</span>);</span><br><span class="line">    <span class="built_in">$finish</span>;</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">this</span><span class="variable">.sa</span> = pkt2send<span class="variable">.sa</span>;</span><br><span class="line">  <span class="keyword">this</span><span class="variable">.da</span> = pkt2send<span class="variable">.da</span>;</span><br><span class="line">  router_cov<span class="variable">.sample</span>();</span><br><span class="line">  coverage_result = <span class="built_in">$get_coverage</span>();</span><br><span class="line">  <span class="built_in">$display</span>(<span class="string">&quot;[NOTE]%0t Packet #%0d %s coverage = %3.2f&quot;</span>, <span class="built_in">$time</span>, pkts_checked++, message, coverage_result);</span><br><span class="line">  <span class="keyword">if</span> ((pkts_checked &gt;= run_for_n_packets) || (coverage_result == <span class="number">100</span>))</span><br><span class="line">    -&gt;DONE;</span><br><span class="line"><span class="keyword">endtask</span></span><br><span class="line"><span class="meta">`<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul>
+<li><code>DUT</code>的功能和结构</li>
+<li>根据<code>DUT</code>的功能及结构我们搭建的验证平台，为什么要这样搭建</li>
+<li>验证平台的各个组件之间的通信，如何跟<code>DUT</code>相关联</li>
+<li>分解测试点，都验了哪些功能，各个功能你是怎么验证的（这个可能有时候会问的比较细致）</li>
+<li>收集覆盖率，代码覆盖率，功能覆盖率为什么才90%？你是怎么收集的？达不到 100%怎么办？</li>
+</ul>
+<p>__本文作者__：Yuchen <a href="http://example.com/2022/02/05/testbentch-lab/">http://example.com/2022/02/05/testbentch-lab/</a> <br>__版权声明__：转载请注明出处！</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#verify" >
+    <span class="tag-code">verify</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2021/09/15/basic/">
+        <span class="nav-arrow">← </span>
+        
+          电路部分
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2022/03/21/DFt/">
+        
+          DFt
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo="HaroldFey/HaroldFey.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-text">文件列表</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-text">Packet</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-text">DriverBase</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-text">Driver</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-text">ReceiverBase</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-text">Receiver</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-text">Generator</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-text">Scoreboard</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://example.com/2022/02/05/testbentch-lab/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+  <script>
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+  </script>
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2022 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+      <br>
+      Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script src="https://utteranc.es/client.js" repo="HaroldFey / HaroldFey.github.io" issue-term="pathname"
+  theme="github-light" crossorigin="anonymous" async>
+  </script>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function () {
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function () {
+    $('figure pre').each(function (i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({ useBR: true });
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+    
+<script src="/js/script.js"></script>
+
+
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      <span id="busuanzi_container_site_pv"><br>
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+      </span>
+  </body>
+</html>
